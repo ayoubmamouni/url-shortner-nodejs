@@ -35,6 +35,8 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 
+
+
 app.get('/',  async (req, res) => {
     const urls = await ShortURL.find({
         showInPublicLinks : true,
