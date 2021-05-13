@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./components/_head.ejs') %> 
+    <title>Short URL app</title>
+</head>
+
+<body>
+    <%- include('./components/_header_loader.ejs') %> 
+
+
+    <section id="recent-link"></section>
+
+    <section>
+        <div class="showLinksBox-button">
+            <button id="show-public-links">Show public links</button>
+        </div>
+
+        <div id="urls-box">
+            <div class="urls-content">
+                <% if(data.length > 0){ %> 
+                    <% data.forEach(url=> { %>
+                        <div class="url-item">
+                            <div class="url fullUrl">
+                                <label>Full URL</label>
+                                <a href="<%= url.fullURL %>"><%= url.fullURL %></a>
+                            </div>
+                            <hr>
+                            <div class="url shortUrl">
+                                <label>Short URL</label>
+                                <a href="/<%= url.shortURL %>"><span class="current-website"></span><%= url.shortURL %></a>
+                                <br>
+                                <br>
+                                <button data-shortLink="<%= url.shortURL %>" class="copy">Copy</button>
+                            </div>
+                            <hr>
+                            <div class="url views">
+                                <label class="labelDetails">Clicks ⇒ <span class="viewsCount"><%= url.views %></span></label>
+                                <br>
+                                <div class="date"><%= url.postedOn.toLocaleDateString() %></div>
+                            </div>
+                        </div>
+                    <% }) %> 
+                <% }else{ %>
+                    <H3>You haven't Links yet!</H3>
+                <% } %> 
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <div class="public-link-choice">
+                <div class="checkbox-message">
+                    <label>Would you like to display your link in public Links?</label>
+                </div>
+                <select name="showInPublicLinks" id="showInPublicLinks">
+                    <option value="true">Display my link</option>
+                    <option value="false">Don't display my link</option>
+                </select>
+            </div>
+
+            <form action="/" method="POST">
+                <label for="fullURL">Enter full URL</label>
+                <div class="main-input">
+                    <input type="url" placeholder="Enter full URL" id="fullURL" name="fullURL" required/>
+                    <input type="submit" value="Short it" id="submit-button">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright &copy; All rights reserved. <span id="yr"></span> <span id="site"></span></p>
+    </footer>
+
+    <script>
+        //change year auto every year
+        document.getElementById('yr').innerText = new Date().getFullYear()
+        //Get Name of current website
+        document.getElementById('site').innerText = window.location.host
+    </script>
+</body>
+</html>
