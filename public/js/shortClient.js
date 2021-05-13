@@ -7,6 +7,8 @@ let urlsBox = document.querySelector('#urls-box')
 let urlDiv = document.querySelector('#url')
 let updatePublicPrivateLinkButton = document.querySelector('#updatePublicPrivateLink')
 let recentLink = document.querySelector('#recent-link')
+let submitButton = document.querySelector('#submit-button')
+
 let userUrls = document.querySelector('.user-urls')
 
 let copy = document.querySelectorAll('.copy')
@@ -164,6 +166,8 @@ if(recentUserLink === undefined || recentUserLink === null){
 
 form.addEventListener('submit', e => {
     e.preventDefault()
+    submitButton.classList.add('disabledClick')
+    submitBtn.value = 'Loading..'
     let fURL = fullURL.value
     if(fURL === '' || fURL === undefined) {
         //position, text, icon, showConfirmButton, timer
@@ -264,6 +268,8 @@ function showAlert(
     }).then((result) => {
         if (result.isConfirmed) {
             copyShortUrl(shortLink, true);
+        }else{
+            window.location.reload()
         }
     })
 }
