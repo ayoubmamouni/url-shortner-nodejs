@@ -8,7 +8,7 @@ let urlDiv = document.querySelector('#url')
 let updatePublicPrivateLinkButton = document.querySelector('#updatePublicPrivateLink')
 let recentLink = document.querySelector('#recent-link')
 let submitButton = document.querySelector('#submit-button')
-
+let ErrorMsg = document.querySelector('#msg-error');
 let userUrls = document.querySelector('.user-urls')
 
 let copy = document.querySelectorAll('.copy')
@@ -28,13 +28,14 @@ copy.forEach(copyLink => {
 //Copy short url to clipboard function
 function copyShortUrl(text, reloadPage) {
     let ShortLink = currentWebsite+'/'+text
+    
     navigator.clipboard.writeText(ShortLink)
     .then(() =>{
         if(reloadPage){
-            showToats('top-right', 'Successfuly Short URL copied', 'success', false, 1600, false, true)
+            showToats('center', 'Successfuly Short URL copied', 'success', false, 1600, false, true)
         }
         else{
-            showToats('top-right', 'Successfuly Short URL copied', 'success', false, 1600, true, false)
+            showToats('center', 'Successfuly Short URL copied', 'success', false, 1600, true, false)
         }
     })
     .catch(err => {
@@ -142,7 +143,16 @@ if(recentUserLink === undefined || recentUserLink === null){
                                     <option value="${BooleanValue}">${checkPublicOrPrivate}</option>
                                     <option value="${AnotherBooleanValue}">${OtherChoice}</option>
                                 </select> 
-                                <div id="updatePublicPrivateLink" onclick="updateUserLink(this)">Update <div id="update-icon">↻</div></div>
+                                <div id="updatePublicPrivateLink" onclick="updateUserLink(this)">Update 
+                                    <div id="update-icon">
+                                        <div class="animatioDivs">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -153,7 +163,15 @@ if(recentUserLink === undefined || recentUserLink === null){
                         <div id="clicksCount">${data.views}</div> 
                         <div id="refresh-clicks" onclick="checkNewClicks(this)">
                             Refresh 
-                        <div id="refresh-icon">↻</div></div>
+                        <!-- <div id="refresh-icon">↻</div></div> -->
+                        <div id="refresh-icon">
+                            <div class="animatioDivs">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="url time">
@@ -186,24 +204,22 @@ form.addEventListener('submit', e => {
         if(data.msg === 'error') {
             return showToats('center', data.txt, 'error', false, 2000, false)
         }
-        // iconType, 
-        // title, 
-        //html
-        // showDenyButton, 
-        // showCancelButton, 
-        // confirmButtonText, 
-        // denyButtonText, 
-        // showConfirmButton, 
-        // position, 
-        // timer
-
+        else if(data.msg === 'error-url-not-supported'){
+            //position, text, icon, showConfirmButton, timer, toast, reloadPage
+            // fullURL.value = ''
+            submitButton.classList.remove('disabledClick')
+            submitBtn.value = 'Try again'
+            setTimeout(() => {
+                ErrorMsg.innerHTML = ''
+            }, 2500)
+            return ErrorMsg.innerHTML = `<p>${data.txt}</p>`
+        }
         let ShortURL
         if( data.short_URL !== undefined) {
                 ShortURL = `<a href="/${data.short_URL}">${currentWebsite}/${data.short_URL}</a>`
         }else{
             ShortURL = '<h2 style="color: red;"> No URL to show! </h2>'
         }
-
         showAlert(
             data.icon,
             data.msg,
@@ -222,6 +238,7 @@ form.addEventListener('submit', e => {
         fullURL.value =''
     })
     .catch(() => showToats('center', 'Error to short a url, Try again Later', 'error', false, 3100, false))
+
 })
 
 //Show Public links button..
@@ -234,7 +251,6 @@ showLinksBtnToggle.addEventListener('click', e => {
         e.target.innerText = 'Show public links'
     } 
 })
-
 
 //I used just these two lines of jquery because I don't know jquery yet. I know easy to learn it, I will lrean it later <3
 $("#show-public-links").click(function(){

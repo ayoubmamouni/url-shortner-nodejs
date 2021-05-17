@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./components/_head.ejs') %>
+    <title><%= config.title %> </title>
+    <% if(config.showNavbar) {%>
+    <script defer src="../js/header.js"></script>
+    <% } %>
+    <link rel="stylesheet" href="../css/pageStyles/pp-and-terms-pages.css">
+</head>
+
+<body>
+    <!-- Show navbar -->
+    <% if(config.showNavbar) {%>
+    <%- include('./components/_header_loader.ejs') %>
+    <% } %>
+
+    <section class="page">
+        <div class="container">
+            <div class="page-card">
+                <div class="page-title">
+                    <h1><%= termOfUseSettings.title %></h1>
+                    <p><%= termOfUseSettings.subTitle %></p>
+                </div>
+                <div class="page-text">
+                    <% termOfUseSettings.privacyPolicy_Details.forEach(item =>{ %> 
+                        <div class="item">
+                            <b><%- item.itemTitle %> </b>
+                            <p><%- item.itemDescription %></p>
+                        </div>
+                    <% }) %> 
+                    <div class="last-updated-date">
+                        <em><%- termOfUseSettings.lastUpdated_title %> </em>
+                        <p><%- termOfUseSettings.lastUpdated %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('./components/_footer.ejs') %>
+</body>
+
+</html>

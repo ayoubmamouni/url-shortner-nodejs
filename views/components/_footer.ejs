@@ -1,0 +1,15 @@
+<noscript>You need to enable JavaScript to make this website working.</noscript>
+<footer>
+    <% if(config.showSocialIcons){ %>
+        <div class="social-links">
+            <% config.socialIcons.forEach(icon=>{%>
+                <div>
+                    <i class="<%= icon.icon %>"></i>
+                </div>
+            <%})%>
+        </div>
+    <% } %> 
+    <div class="copyright-info">
+        <p><%- config.footerText %></p>
+    </div>
+</footer>

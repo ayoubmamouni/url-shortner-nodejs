@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./components/_head.ejs') %>
+    <title><%= config.title %> </title>
+    <% if(config.showNavbar) {%>
+    <script defer src="../js/header.js"></script>
+    <% } %>
+    <link rel="stylesheet" href="../css/pageStyles/about.css">
+</head>
+
+<body>
+    <!-- Show navbar -->
+    <% if(config.showNavbar) {%>
+    <%- include('./components/_header_loader.ejs') %>
+    <% } %>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-card">
+                
+                <div class="card-title">
+                    <h1><%- aboutSettings.title %> </h1>
+                </div>
+                <div class="about-subtitle">
+                    <p><%- aboutSettings.subTitle %></p>
+                </div>
+
+                <% aboutSettings.aboutDetails.forEach(item =>{ %>
+                    <div class="item">
+                        <b><%- item.itemTitle %> </b>
+                        <p><%- item.itemDescription %></p>
+                    </div>
+                <% }) %> 
+            </div>
+        </div>
+    </section>
+
+    <%- include('./components/_footer.ejs') %>
+</body>
+
+</html>

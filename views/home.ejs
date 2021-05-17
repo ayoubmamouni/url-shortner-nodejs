@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <%- include('./components/_head.ejs') %> 
-    <title>Short URL app</title>
+    <%- include('./components/_head.ejs') %>
+    <%- include('./components/_head-files.ejs') %>
+    <% if(config.showAds) {%> 
+        <%- include('./components/ads/_ad-head-script.ejs') %> 
+    <% } %> 
+    <% if(config.showNavbar) {%> 
+        <script defer src="js/header.js"></script>
+    <% } %> 
+    <title><%= config.title %> </title>
 </head>
 
 <body>
-    <%- include('./components/_header_loader.ejs') %> 
+    <% if(config.showNavbar) {%>
+    <%- include('./components/_header_loader.ejs') %>
+    <% } %>
 
+    <% if(config.show_mainTitle || config.show_description) {%> 
+        <section>
+            <div class="top-content">
+                <% if(config.show_mainTitle) {%>
+                    <div class="main-title"><%- config.mainTitle %></div>
+                <% } %>
+
+                <% if(config.show_description) {%>
+                    <div class="main-description">
+                        <p><%- config.description %></p>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+    <% } %> 
+
+    <% if(config.showAds) {%> 
+        <% if(config.showAd1){ %> 
+            <section>
+                <%- include('./components/ads/_ad1-script.ejs') %> 
+            </section>
+        <% } %> 
+    <% } %> 
 
     <section id="recent-link"></section>
 
+    <% if(config.showAds) {%> 
+        <% if(config.showAd2){ %> 
+            <section>
+                <%- include('./components/ads/_ad2-script.ejs') %> 
+            </section>
+        <% } %> 
+    <% } %> 
+
+    <% if(config.showPublicLinks) {%>
     <section>
         <div class="showLinksBox-button">
             <button id="show-public-links">Show public links</button>
@@ -18,36 +60,36 @@
 
         <div id="urls-box">
             <div class="urls-content">
-                <% if(data.length > 0){ %> 
-                    <% data.forEach(url=> { %>
-                        <div class="url-item">
-                            <div class="url fullUrl">
-                                <label>Full URL</label>
-                                <a href="<%= url.fullURL %>"><%= url.fullURL %></a>
-                            </div>
-                            <hr>
-                            <div class="url shortUrl">
-                                <label>Short URL</label>
-                                <a href="/<%= url.shortURL %>"><span class="current-website"></span><%= url.shortURL %></a>
-                                <br>
-                                <br>
-                                <button data-shortLink="<%= url.shortURL %>" class="copy">Copy</button>
-                            </div>
-                            <hr>
-                            <div class="url views">
-                                <label class="labelDetails">Clicks ⇒ <span class="viewsCount"><%= url.views %></span></label>
-                                <br>
-                                <div class="date"><%= url.postedOn.toLocaleDateString() %></div>
-                            </div>
-                        </div>
-                    <% }) %> 
+                <% if(data.length > 0){ %>
+                <% data.forEach(url=> { %>
+                <div class="url-item">
+                    <div class="url fullUrl">
+                        <label>Full URL</label>
+                        <a href="<%= url.fullURL %>"><%= url.fullURL %></a>
+                    </div>
+                    <hr>
+                    <div class="url shortUrl">
+                        <label>Short URL</label>
+                        <a href="/<%= url.shortURL %>"><span class="current-website"></span><%= url.shortURL %></a>
+                        <br>
+                        <br>
+                        <button data-shortLink="<%= url.shortURL %>" class="copy">Copy</button>
+                    </div>
+                    <hr>
+                    <div class="url views">
+                        <label class="labelDetails">Clicks ⇒ <span class="viewsCount"><%= url.views %></span></label>
+                        <br>
+                        <div class="date"><%= url.postedOn.toLocaleDateString() %></div>
+                    </div>
+                </div>
+                <% }) %>
                 <% }else{ %>
-                    <H3 style="padding: 2rem 0; color: aqua;">No public Links available!</H3>
-                <% } %> 
+                <H3 style="padding: 2rem 0; color: aqua;">No public Links available!</H3>
+                <% } %>
             </div>
         </div>
     </section>
-
+    <% } %>
 
     <section>
         <div class="container">
@@ -62,24 +104,37 @@
             </div>
 
             <form action="/" method="POST">
+                <% if(config.allows_user_to_create_URL != true){ %>
+                <div id="msg-error" style="color:orangered; padding:10px 0;">
+                    You can't create a URL, Admin disabled this feature at the moment, Try again later
+                </div>
+                <label for="fullURL" style="color:rgb(246, 85, 26);">Try later!</label>
+                <div class="main-input">
+                    <input type="url" placeholder="Enter full URL" id="fullURL" name="fullURL" disabled="disabled"
+                        required />
+                </div>
+                <% }else{ %>
+                <div id="msg-error" style="color:orangered; padding:10px 0;"></div>
                 <label for="fullURL">Enter full URL</label>
                 <div class="main-input">
-                    <input type="url" placeholder="Enter full URL" id="fullURL" name="fullURL" required/>
+                    <input type="url" placeholder="Enter full URL" id="fullURL" name="fullURL" required />
                     <input type="submit" value="Short it" id="submit-button">
                 </div>
+                <% } %>
             </form>
         </div>
     </section>
 
-    <footer>
-        <p>Copyright &copy; All rights reserved. <span id="yr"></span> <span id="site"></span></p>
-    </footer>
+    <% if(config.showAds) {%> 
+        <% if(config.showAd3){ %> 
+            <section>
+                <%- include('./components/ads/_ad3-script.ejs') %> 
+            </section>
+        <% } %> 
+    <% } %> 
 
-    <script>
-        //change year auto every year
-        document.getElementById('yr').innerText = new Date().getFullYear()
-        //Get Name of current website
-        document.getElementById('site').innerText = window.location.host
-    </script>
+    <%- include('./components/_footer.ejs') %> 
+
 </body>
+
 </html>

@@ -1,38 +1,38 @@
 <!-- Show loading animation before page is loaded -->
-  <!-- <div class="loader">
+  <div class="loader">
     <div></div>
     <div></div>
     <div></div>
     <div></div>
     <div></div>
-</div> -->
+</div>
 
 <!-- To close navbar when user clicking on any place in page. -->
-<!-- <div class="overlay"></div>
+<div class="overlay"></div>
 
 <header>
     <nav>
         <div class="logo">
-            <span id="logo"><h1>Awesome Brand</h1></span>
+            <span id="logo"><h1><%= config.appName %> </h1></span>
         </div>
-        <div id="nav-toggle">
-            <div id="line1"></div>
-            <div id="line2"></div>
-            <div id="line3"></div>
-        </div>
-        <ul id="nav-ul">
-            <li>
-                <a href="#">Contact</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Privacy Policy</a>
-            </li>
-            <li>
-                <a href="#">Term of Use</a>
-            </li>
-        </ul>
+        <% if(config.websitePages.length > 0 || config.externalLinks.length > 0){ %>
+            <div id="nav-toggle">
+                <div id="line1"></div>
+                <div id="line2"></div>
+                <div id="line3"></div>
+            </div>
+            <ul id="nav-ul">
+                <% config.websitePages.forEach(localPage =>{ %>
+                    <li>
+                        <a href="<%= localPage.linkURL %>"><%= localPage.linkName %></a>
+                    </li>
+                <% }) %>
+                <% config.externalLinks.forEach(externalLink =>{ %>
+                    <li>
+                        <a class="externalLink" href="<%= externalLink.linkURL %>"><%= externalLink.linkName %> <span>◥</span></a>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %> 
     </nav>
-</header> -->
+</header>

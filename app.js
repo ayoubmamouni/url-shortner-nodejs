@@ -2,11 +2,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
 const str = require('@supercharge/strings')
-
+const config = require('./global-settings')
 //require shortSchema
 const ShortURL = require('./model/shortSchema')
 
 const app = express()
+
 
 //in development mode, We dont need those (dotenv & morgan) in production mode!
 if(process.env.NODE_ENV !== 'production') {
@@ -34,51 +35,86 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
+//Render pages only if navbar is enabled// if showNavbar is 'false' a user can access to any page in website. like privacy-policy or contact page etc...
+if(config.showNavbar){
+    //routers/ pages
+    //contact page route
+    app.use('/pages', require('./routers/pages'))
+}
 
-
-
+//Get home page
 app.get('/',  async (req, res) => {
     const urls = await ShortURL.find({
-        showInPublicLinks : true,
+        showInPublicLinks : true, //get only public links
     }).sort({ postedOn: -1})
-    res.render('home', {data : urls})
+    res.render('home', {data : urls , config})
 })
 
+//On post full URL
 app.post('/', async (req, res) => {
+    let userFullURL = req.body.fullURL.toLowerCase()
+    let error = false
+    let textError
 
-    //A user can change type of url to text with inspect elements in browser, So we will return Error..
-    let findProtocolInURL = await req.body.fullURL.match('http') || req.body.fullURL.match('HTTP')
+    if(!config.allow_to_short_shorterURL){
+        if(userFullURL.length <= config.allow_to_short_shorterURL_Number_Length){
+            textError = config.user_full_URL_is_already_shorter_message
+            error = true
+        }
+    }
+
+    if(!config.allows_user_to_create_URL){
+        return res.json({
+            msg: 'error-url-not-supported',
+            txt: config.when_create_a_URL_is_disabled_message,
+        })
+    }
+    if(!config.user_can_Add_Adults_Link){
+        for(let i = 0; i < config.links_Not_Supported.length; i++) {
+            const linkDoesntSupported = await userFullURL.match(config.links_Not_Supported[i])
+            if(linkDoesntSupported != null) {
+                textError = config.when_user_add_unsupported_URL_message
+                error = true
+                break;
+            }
+        }
+    }
+    //if error is true
+    if(error){
+        return res.json({
+            msg: 'error-url-not-supported',
+            txt: textError,
+        })
+    }
+    //A user can change type of url to text from inspect elements in browser, So we will return Error..
+    let findProtocolInURL = await userFullURL.match('http') || userFullURL.match('HTTP')
     if(findProtocolInURL === null || findProtocolInURL.index !== 0){
         return res.json({
             msg: 'error',
-            txt: 'This field should be a URL!',
+            txt: config.when_user_post_text_not_URL,
             icon: 'error',
             showCancelButton: false,
             showConfirmButton: false,
             timer: 3100
         })
     }
-
-
+    
     //  A user can send us nothing from url input, 
-    //  We did the same in client side but user can change front-end code and he can send us nothing
-    //  so this code wil return him an error message
-    if(req.body.fullURL === '' || req.body.fullURL === undefined) {
+    //  We did the same in client side but user can make any change in front-end code and he can send us nothing
+    //  so this code wil return error message
+    if(userFullURL === '' || userFullURL === undefined) {
         return res.json({
             msg: 'error',
-            txt: 'input field is required, Please Enter Full URL!',
+            txt: config.when_user_post_nothing_message,
             icon: 'error',
             showCancelButton: false,
             showConfirmButton: false,
             timer: 3000
         })
     }
-
-    
-    console.log(req.body.showInPublicLinks)
-    //else..
-    // You can change the value of random function as you want
-    let randomTXT = str.random(5)
+    //if eveything ok ..
+    // You can change the value to any number
+    let randomTXT = str.random(config.RandomText_length)
     
     const short_URL  = async (shortRandomTxt)=>{
         const data = {
@@ -88,7 +124,7 @@ app.post('/', async (req, res) => {
         }
         const newURL = await ShortURL.create(data)
         res.json({
-            msg: 'Short URL created successfully',
+            msg: config.link_created_successful_message,
             icon: 'success',
             btnTxt: 'copy to clipboard',
             showCancelButton: true,
@@ -102,34 +138,37 @@ app.post('/', async (req, res) => {
         })
     }
 
-    //check if there an existing url already in db
+    //check if there an existing short url already in db
     const checkExistURL = await ShortURL.findOne({shortURL : randomTXT})
-    //if true . thats mean no url already in db with that short txt
+    //if No short URL already in db
     if( checkExistURL === undefined || 
         checkExistURL === null || 
         checkExistURL === '') {
             short_URL(randomTXT)
-        }
-        // if else thats mean there is an exist shorturl in db, so lets generate new rndm txt
-        else{
-            newRandomTXT = str.random(5)
-            short_URL(newRandomTXT)
-        }
+    }
+    // if short URL is already in db, so lets generate new rndm txt
+    else{
+        newRandomTXT = str.random(config.RandomText_length+1)
+        short_URL(newRandomTXT)
+    }
 })
 
 //get shortUrl 
 app.get('/:id', async (req, res) => {
     const result = await ShortURL.findOne({shortURL: req.params.id})
+    //if no shortURL return to home page
     if(result == null) {
         return res.redirect('/')
     }
-    //new view
+    //if not equal null, then add +1 to views of short URL
     await result.views++;
+    //then save
     await result.save()
+    //and redirect to full url
     res.redirect(result.fullURL)
 })
 
-//-----
+//when a user clicks on 'refresh' button on recent URL
 app.get('/checkNewClicks/:id', async (req, res)=>{
     const result = await ShortURL.findOne({shortURL: req.params.id})
     if(result == null) {
@@ -142,7 +181,7 @@ app.get('/checkNewClicks/:id', async (req, res)=>{
 app.get('/getRecentURL/:id', async (req, res) => {
     const recentURL = await ShortURL.findById(req.params.id)
     if(recentURL == null) {
-        return res.json({message: 'Cannot find recent URL'})
+        return res.json({message: config.recent_URL_Not_found_message})
     }
     res.json({
         showInPublicLinks: recentURL.showInPublicLinks,
@@ -164,9 +203,10 @@ app.put('/updateRecentURL/:id', async (req, res) => {
         return res.redirect('/')
     }
     res.json({
-        msg: 'Successfuly Link Updated'
+        msg: config.link_updated_successful_message
     })
 })
 
-let port =  process.env.PORT || 3000
-app.listen(port, () => console.log(`Server started at ${port}`))
+// let port =  process.env.PORT || 3000
+// app.listen(port, () => console.log(`Server started at ${port}`))
+module.exports = app
