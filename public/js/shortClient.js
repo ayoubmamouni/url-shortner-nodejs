@@ -122,7 +122,7 @@ if(recentUserLink === undefined || recentUserLink === null){
                 <div class="url shortUrl">
                     <label>Short URL</label>
                     <br>
-                    <a href="/${data.short_URL}">${currentWebsite}/${data.short_URL}</a>
+                    <a href="/${data.short_URL}" target="_blank">${currentWebsite}/${data.short_URL}</a>
                     <br>
                     <br>
                     <button data-clipboard-text="${currentWebsite}/${data.short_URL}" class="copyRecentURL">Copy</button>
