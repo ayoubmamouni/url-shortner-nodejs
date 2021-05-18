@@ -20,29 +20,23 @@ shortUrlWebsite.forEach(site => site.innerText = currentWebsite+'/')
 
 let recentUserLink = localStorage.getItem("recentUrlId")
 
+//Copy short url to clipboard
 //On click on copy button
 copy.forEach(copyLink => {
-    copyLink.onclick = () => copyShortUrl(copyLink.dataset.shortlink, false)
+    let SHORT_URL = copyLink.dataset.shortUrl
+    copyLink.dataset.clipboardText = currentWebsite+'/'+SHORT_URL
+    copyToClipboard(copyLink)
 })
 
-//Copy short url to clipboard function
-function copyShortUrl(text, reloadPage) {
-    let ShortLink = currentWebsite+'/'+text
-    
-    navigator.clipboard.writeText(ShortLink)
-    .then(() =>{
-        if(reloadPage){
-            showToats('center', 'Successfuly Short URL copied', 'success', false, 1600, false, true)
-        }
-        else{
-            showToats('center', 'Successfuly Short URL copied', 'success', false, 1600, true, false)
-        }
-    })
-    .catch(err => {
-        showToats('top', 'OOPS! Cannot copy URL, We will fix this problem later', 'error', false, 1800, true, false)
-    })
-}
 
+function copyToClipboard(btn){
+    var clipboard = new ClipboardJS(btn)
+    clipboard.on('success', e => {
+        showToats('center', 'Successfuly Short URL copied', 'success', false, 1600, true, false)
+        e.clearSelection()
+    })
+    clipboard.on('error', e =>  showToats('center', 'Cannot copy Link to clipboard', 'error', false, 1600, true, false))
+}
 
 function updateUserLink(updateLinkButton){
     let LinkPoblicPrivateValue = document.querySelector('#LinkPoblicPrivateValue')
@@ -131,7 +125,7 @@ if(recentUserLink === undefined || recentUserLink === null){
                     <a href="/${data.short_URL}">${currentWebsite}/${data.short_URL}</a>
                     <br>
                     <br>
-                    <button data-shortLink="${data.short_URL}" class="copyRecentURL" onclick="copyShortUrl(this.dataset.shortlink, false)">Copy</button>
+                    <button data-clipboard-text="${currentWebsite}/${data.short_URL}" class="copyRecentURL">Copy</button>
                 </div>
                 <hr>
                 <div class="url ">
@@ -174,11 +168,28 @@ if(recentUserLink === undefined || recentUserLink === null){
                         </div>
                     </div>
                 </div>
+
+                <br/>
+                <!-- QRCode start-->
+                <label id="qrcode-label">QRCode</label>
+                <div id="qrcode"></div>
+                <!-- QRCode End-->
+
                 <div class="url time">
                     <code style="color:yellow; opacity: 0.5;">${data.date}</code>
                 </div>
             </div>
         `
+        new QRCode(document.getElementById("qrcode"), {
+            text: `${currentWebsite}/${data.short_URL}`,
+            width: 150,
+            height: 150,
+            colorDark : "#000",
+            colorLight : "#fff",
+            correctLevel : QRCode.CorrectLevel.H
+        })
+        let copyRecentURL = document.querySelector('.copyRecentURL')
+        copyToClipboard(copyRecentURL)
     })
  }
 
@@ -220,25 +231,11 @@ form.addEventListener('submit', e => {
         }else{
             ShortURL = '<h2 style="color: red;"> No URL to show! </h2>'
         }
-        showAlert(
-            data.icon,
-            data.msg,
-            ShortURL,
-            false,
-            data.showCancelButton,
-            data.btnTxt,
-            '',
-            data.showConfirmButton,
-            'center',
-            data.timer,
-            data.short_URL
-        )
-
+        showToats('center', data.msg, data.icon, false, data.timer, true, true)
         localStorage.setItem("recentUrlId", data.id)
         fullURL.value =''
     })
     .catch(() => showToats('center', 'Error to short a url, Try again Later', 'error', false, 3100, false))
-
 })
 
 //Show Public links button..
@@ -256,39 +253,6 @@ showLinksBtnToggle.addEventListener('click', e => {
 $("#show-public-links").click(function(){
     $("#urls-box").slideToggle();
 });
-
-function showAlert(
-    iconType, 
-    title, 
-    html,
-    showDenyButton, 
-    showCancelButton, 
-    confirmButtonText, 
-    denyButtonText, 
-    showConfirmButton, 
-    position, 
-    timer,
-    shortLink
-    ) {
-    Swal.fire({
-        icon:iconType,
-        title: title,
-        html: html,
-        showDenyButton: showDenyButton,
-        showCancelButton: showCancelButton,
-        confirmButtonText: confirmButtonText,
-        denyButtonText: denyButtonText,
-        showConfirmButton: showConfirmButton,
-        position: position,
-        timer: timer
-    }).then((result) => {
-        if (result.isConfirmed) {
-            copyShortUrl(shortLink, true);
-        }else{
-            window.location.reload()
-        }
-    })
-}
 
 function showToats(position, text, icon, showConfirmButton, timer, toast, reloadPage) {
     Swal.fire({

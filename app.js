@@ -129,7 +129,7 @@ app.post('/', async (req, res) => {
             btnTxt: 'copy to clipboard',
             showCancelButton: true,
             showConfirmButton: true,
-            timer: 60*1000,
+            timer: 1500,
             id: newURL._id,
             fullURL: newURL.fullURL,
             short_URL : newURL.shortURL,

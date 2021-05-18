@@ -470,6 +470,16 @@ header nav ul li a.externalLink:before {
   color: yellow;
 }
 
+#recent-link .url-item #qrcode-label {
+  color: #b8b8aa;
+  padding-left: 1rem;
+}
+
+#recent-link .url-item #qrcode {
+  padding: 1rem;
+  padding-top: .3rem;
+}
+
 .ad-container {
   margin: 10px 2rem;
   max-width: 700px;
