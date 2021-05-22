@@ -1,4 +1,4 @@
-const express =  require('express')
+const express = require('express')
 const config = require('../global-settings')
 const contactSettings = require('../settings-contact-page')
 const aboutSettings = require('../settings-about-page')
@@ -9,22 +9,41 @@ const pages = express.Router()
 
 //contact page
 pages.get('/contact', (req, res) => {
-    res.render('contact', {config, contactSettings})
+    res.render('contact', {
+        config,
+        contactSettings
+    })
 })
 
 //about page
 pages.get('/about', (req, res) => {
-    res.render('about', {config, aboutSettings})
+    res.render('about', {
+        config,
+        aboutSettings
+    })
 })
 
 //privacy-policy page
 pages.get('/privacy-policy', (req, res) => {
-    res.render('privacy-policy', {config, ppSettings})
+    res.render('privacy-policy', {
+        config,
+        ppSettings
+    })
 })
 
 //term of use page
 pages.get('/term-of-use', (req, res) => {
-    res.render('term-of-use', {config, termOfUseSettings})
+    res.render('term-of-use', {
+        config,
+        termOfUseSettings
+    })
+})
+
+//Docs page -- how to install and more..
+pages.get('/docs', (req, res) => {
+    res.render('Docs', {
+        config
+    })
 })
 
 module.exports = pages
