@@ -377,7 +377,7 @@ section.docs-section .docs-content {
   overflow: auto;
   border-radius: 10px;
   max-width: 900px;
-  padding: 1.3rem;
+  padding: 1.3rem .7rem;
   -webkit-transition: 500ms;
   transition: 500ms;
   border: 2px solid aqua;
@@ -467,11 +467,30 @@ section.docs-section .docs-content .docs-description .item ul li a {
   color: #1d5fd2;
 }
 
+section.docs-section .docs-content .docs-description .item .uri {
+  color: yellow;
+}
+
+section.docs-section .docs-content .docs-description .item .mongodb-uri {
+  background: black;
+  overflow: auto;
+}
+
+section.docs-section .docs-content .docs-description .item .mongodb-uri pre {
+  color: white;
+}
+
 section.docs-section .docs-content .docs-description .item code {
   background: black;
   color: white;
   padding: 5px;
   border-radius: 3px;
+}
+
+section.docs-section .docs-content .docs-description .item .file-description {
+  color: yellow;
+  opacity: .5;
+  font-size: 12px;
 }
 
 section.docs-section .docs-content .docs-description .docs-footer-contact-me {

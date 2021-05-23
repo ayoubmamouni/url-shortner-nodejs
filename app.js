@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const path = require('path')
 const str = require('@supercharge/strings')
 const config = require('./global-settings')
-const fs = require('fs')
+// const fs = require('fs')
 //require shortSchema
 const ShortURL = require('./model/shortSchema')
 

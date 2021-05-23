@@ -31,7 +31,8 @@
                         <li><span>HTML</span></li>
                         <li><span>CSS</span></li>
                         <li><span>Sass</span> (I wrote CSS using Sass, CSS pre processor)</li>
-                        <li><span>JavaScript</span> (My favorite language 💛)</li>
+                        <li><span>JavaScript</span> (My favorite language 💛, This language is everything for this
+                            webite.)</li>
                         <li><span>SweetAlert2</span> (For beatiful alerts)</li>
                         <li><span>Nodejs/Express</span> (I used Express as a Nodejs framework for backend)</li>
                         <li><span>Mongoose</span> (I used Mongoose to connect to MongoDb)</li>
@@ -76,9 +77,9 @@
                     <p>From</p>
                     <code><span class="uri">URI</span>=mongodb://localhost/shortUrl</code>
                     <p>To</p>
-                    <code><span
-                            class="uri">URI</span>=mongodb://DB_USERNAME:YOURPASSWORD@cluster0-shard-00-00.auidd.mongodb.net:27017,cluster0-shard-00-01.auidd.mongodb.net:27017,cluster0-shard-00-02.auidd.mongodb.net:27017/DATABASE_NAME?ssl=true&replicaSet=atlas-hoe7u3-shard-0&authSource=admin&retryWrites=true&w=majority
-                    </code>
+                    <div class="mongodb-uri">
+                        <pre><span class="uri">URI</span>=mongodb://DB_USERNAME:YOURPASSWORD@cluster0-shard-00-00.auidd.mongodb.net:27017,cluster0-shard-00-01.auidd.mongodb.net:27017,cluster0-shard-00-02.auidd.mongodb.net:27017/DATABASE_NAME?ssl=true&replicaSet=atlas-hoe7u3-shard-0&authSource=admin&retryWrites=true&w=majority</pre>
+                    </div>
                     <p>Please Sign up to MongoDb and get your own db link <a href="#">Sign up</a></p>
                     <p>If you want to read more how to Create your account and and how to get your database link from
                         MongoDB Please <a href="#">Click here</a></p>
@@ -101,10 +102,11 @@
                     <label><a href="http://localhost:3000">http://localhost:3000</a></label>
                 </div>
                 <div class="item">
-                    <b>How to change anything in website?</b>
+                    <b>What changes can I do for website?</b>
                     <br>
-                    <p>There is a file in project files named <span class="file">global-settings</span></p>
-                    <p>in this file you can change anything you want</p>
+                    <p>There is a lot of changes you can do, I developed a file I named it <span
+                            class="file">global-settings</span></p>
+                    <p>in this file you can do any change you want in website (just switch between True and False)</p>
                     <ul>
                         <li><span>Navbar</span> (You can hide or display navbar)</li>
                         <li><span>Recent Link</span> (You can hide or display Recent Link)</li>
@@ -115,6 +117,26 @@
                         <li><span>Add link to navbar</span> (Add any link to website.)</li>
                     </ul>
                     <p>You can do all this and more just from <span class="file">global-settings</span> file</p>
+                </div>
+                <div class="item" style="line-height: 1.2rem;">
+                    <b>How to add your custom Ads?</b>
+                    <br>
+                    <p>To add your custom Ads go to </p>
+                    <pre><span class="file">views</span> <span style="background: #000; color: yellow;">&gt;</span> <span class="file">components</span> <span style="background: #000; color: yellow;">&gt;</span> <span class="file">ads</span></pre>
+                    <p>inside <span class="file">ads</span> folder there is four files you need.</p>
+                    <br>
+                    <label style="background:grey; padding: 2px;">_ad-head-script.ejs </label><br>
+                    <span class="file-description">if you have a head script and you want to put it between HEAD tags just past your script in this file. You can add google Adsense Head script or any alternative to google adsense</span> <br>
+                    <br>
+                    <label style="background:grey; padding: 2px;">_ad1-script.ejs </label><br>
+                    <span class="file-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, ut!</span><br>
+                    <br>
+                    <label style="background:grey; padding: 2px;">_ad2-script.ejs </label><br>
+                    <span class="file-description">Lorem ipsum dolor sit.</span><br>
+                    <br>
+                    <label style="background:grey; padding: 2px;">_ad3-script.ejs </label><br>
+                    <span class="file-description">Lorem ipsum dolor sit amet.</span>
+                    <br>
                 </div>
                 <div class="docs-footer-contact-me">
                     <b>Any questions?</b>
