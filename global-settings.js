@@ -129,7 +129,7 @@ let config = {
         },
     ],
     show_mainTitle: true,
-    mainTitle: '<h1>Simple and Responsive design</h1> <b>(Demo)</b>',
+    mainTitle: `<b>(Demo) <br> <h2 style="color: white;">This website still under development (Not completed yet) <span style="color:yellow;">So if you found any issue please contact me at iksdev@yahoo.com</span></h2></b>`,
     show_description: true,
     description: 'Short any URL at anytime without login',
     //basic SEO
