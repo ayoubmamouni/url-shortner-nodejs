@@ -1,5 +1,5 @@
 //Website settings
-let websiteName = 'Shortter' //Website name
+let websiteName = 'Shortner' //Website name
 let currentYear = new Date().getFullYear()
 let copyRightYear = 2021 //if you want to change copyRightYear every year automaticly just change 2021 value to currentYear example => let copyRightYear = currentYear
 let shortURL_max = 20 //if a URL less than 20 we will return Error, if you want to return it Off just change allow_to_short_shorterURL to true, You can find this option below..
@@ -131,7 +131,7 @@ let config = {
     //#TODO
     //Error Page Title
     errorTitle: `Page not Found (404) - ${websiteName}`,
-    footerText: `<span id="site">${websiteName}</span> (v1.0.0)<br/> Copyright © All rights reserved ${copyRightYear}`
+    footerText: `<span id="site">${websiteName}</span> By Ayoub-Mamouni (v1.0.0)<br/> Copyright © All rights reserved ${copyRightYear}`
 }
 
 module.exports = config;
