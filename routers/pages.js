@@ -20,6 +20,7 @@ pages.get('/about', (req, res) => {
     res.render('about', {
         config,
         aboutSettings
+
     })
 })
 
@@ -36,13 +37,6 @@ pages.get('/term-of-use', (req, res) => {
     res.render('term-of-use', {
         config,
         termOfUseSettings
-    })
-})
-
-//Docs page -- how to install and more..
-pages.get('/docs', (req, res) => {
-    res.render('Docs', {
-        config
     })
 })
 

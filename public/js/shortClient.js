@@ -15,7 +15,7 @@ let copy = document.querySelectorAll('.copy')
 
 //Get website URL
 let currentWebsite = `${window.location.protocol}//${window.location.host}`
-shortUrlWebsite.forEach(site => site.innerText = currentWebsite+'/')
+shortUrlWebsite.forEach(site => site.innerText = currentWebsite + '/')
 
 
 let recentUserLink = localStorage.getItem("recentUrlId")
@@ -24,35 +24,37 @@ let recentUserLink = localStorage.getItem("recentUrlId")
 //On click on copy button
 copy.forEach(copyLink => {
     let SHORT_URL = copyLink.dataset.shortUrl
-    copyLink.dataset.clipboardText = currentWebsite+'/'+SHORT_URL
+    copyLink.dataset.clipboardText = currentWebsite + '/' + SHORT_URL
     copyToClipboard(copyLink)
 })
 
 
-function copyToClipboard(btn){
+function copyToClipboard(btn) {
     var clipboard = new ClipboardJS(btn)
     clipboard.on('success', e => {
         showToats('center', 'Successfuly Short URL copied', 'success', false, 1600, true, false)
         e.clearSelection()
     })
-    clipboard.on('error', e =>  showToats('center', 'Cannot copy Link to clipboard', 'error', false, 1600, true, false))
+    clipboard.on('error', e => showToats('center', 'Cannot copy Link to clipboard', 'error', false, 1600, true, false))
 }
 
-function updateUserLink(updateLinkButton){
+function updateUserLink(updateLinkButton) {
     let LinkPoblicPrivateValue = document.querySelector('#LinkPoblicPrivateValue')
     let updatePublicPrivateIcon = document.querySelector('#update-icon')
     updatePublicPrivateIcon.classList.add('rotateRefreshIcon')
     updateLinkButton.classList.add('disabledClick')
     setTimeout(() => {
         fetch(`/updateRecentURL/${recentUserLink}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                showInPublicLinks: LinkPoblicPrivateValue.value,
-            })
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    showInPublicLinks: LinkPoblicPrivateValue.value,
+                })
             })
             .then((res) => res.json())
-            .then((data) =>{
+            .then((data) => {
                 updatePublicPrivateIcon.classList.remove('rotateRefreshIcon')
                 updateLinkButton.classList.remove('disabledClick')
                 swal.fire({
@@ -62,13 +64,13 @@ function updateUserLink(updateLinkButton){
                     text: data.msg,
                     position: 'center',
                     showConfirmButton: false,
-                }).then(()=>window.location.reload())
-            }).catch((err) =>console.log(err))
+                }).then(() => window.location.reload())
+            }).catch((err) => console.log(err))
     }, 1200)
 }
 
 //When a user click on refresh btn
-function checkNewClicks(refreshButton){
+function checkNewClicks(refreshButton) {
     let refreshIcon = document.querySelector('#refresh-icon')
     let clicksCount = document.querySelector('#clicksCount')
     refreshIcon.classList.add('rotateRefreshIcon')
@@ -76,41 +78,41 @@ function checkNewClicks(refreshButton){
     //Show refresh animation for 1,2s
     setTimeout(() => {
         fetch(`/getRecentURL/${recentUserLink}`, {
-            method: 'GET'
+                method: 'GET'
             }).then((res) => res.json())
-            .then((data) =>{
+            .then((data) => {
                 clicksCount.innerText = data.views
                 refreshIcon.classList.remove('rotateRefreshIcon')
                 refreshButton.classList.remove('disabledClick')
-            }).catch((err) =>console.log(err))
+            }).catch((err) => console.log(err))
     }, 1200)
 }
 
-if(recentUserLink === undefined || recentUserLink === null){
+if (recentUserLink === undefined || recentUserLink === null) {
     recentLink.innerHTML = `<div class="url-item"><h3 style="padding: 1.4rem 0; text-align: center; color: aqua;">No recent URL found </h3></div>`
- }else{
+} else {
     fetch(`/getRecentURL/${recentUserLink}`, {
-        method: 'GET',
-    })
-    .then(response => response.json())
-    .then(data => {
+            method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => {
 
-        let checkPublicOrPrivate
-        let OtherChoice
-        let BooleanValue
-        let AnotherBooleanValue
-        if(data.showInPublicLinks){
-            checkPublicOrPrivate = 'Public'
-            OtherChoice = 'Private'
-            BooleanValue = true
-            AnotherBooleanValue = false
-        }else{
-            checkPublicOrPrivate = 'Private'
-            OtherChoice = 'Public'
-            BooleanValue = false
-            AnotherBooleanValue = true
-        }
-        recentLink.innerHTML = `
+            let checkPublicOrPrivate
+            let OtherChoice
+            let BooleanValue
+            let AnotherBooleanValue
+            if (data.showInPublicLinks) {
+                checkPublicOrPrivate = 'Public'
+                OtherChoice = 'Private'
+                BooleanValue = true
+                AnotherBooleanValue = false
+            } else {
+                checkPublicOrPrivate = 'Private'
+                OtherChoice = 'Public'
+                BooleanValue = false
+                AnotherBooleanValue = true
+            }
+            recentLink.innerHTML = `
             <div class="url-item">
                 <h2 style="padding: .7rem .5rem;">Your recent link</h2>
                 <div class="url fullUrl">
@@ -180,77 +182,78 @@ if(recentUserLink === undefined || recentUserLink === null){
                 </div>
             </div>
         `
-        new QRCode(document.getElementById("qrcode"), {
-            text: `${currentWebsite}/${data.short_URL}`,
-            width: 150,
-            height: 150,
-            colorDark : "#000",
-            colorLight : "#fff",
-            correctLevel : QRCode.CorrectLevel.H
+            new QRCode(document.getElementById("qrcode"), {
+                text: `${currentWebsite}/${data.short_URL}`,
+                width: 150,
+                height: 150,
+                colorDark: "#000",
+                colorLight: "#fff",
+                correctLevel: QRCode.CorrectLevel.H
+            })
+            let copyRecentURL = document.querySelector('.copyRecentURL')
+            copyToClipboard(copyRecentURL)
         })
-        let copyRecentURL = document.querySelector('.copyRecentURL')
-        copyToClipboard(copyRecentURL)
-    })
- }
+}
 
 form.addEventListener('submit', e => {
     e.preventDefault()
     submitButton.classList.add('disabledClick')
     submitBtn.value = 'Loading..'
     let fURL = fullURL.value
-    if(fURL === '' || fURL === undefined) {
+    if (fURL === '' || fURL === undefined) {
         //position, text, icon, showConfirmButton, timer
         return showToats('center', 'Pleas enter URL', 'error', false, 2000, false)
     }
     fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            showInPublicLinks: showInPublicLinks.value,
-            fullURL : fURL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                showInPublicLinks: showInPublicLinks.value,
+                fullURL: fURL
+            })
         })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if(data.msg === 'error') {
-            return showToats('center', data.txt, 'error', false, 2000, false)
-        }
-        else if(data.msg === 'error-url-not-supported'){
-            //position, text, icon, showConfirmButton, timer, toast, reloadPage
-            // fullURL.value = ''
-            submitButton.classList.remove('disabledClick')
-            submitBtn.value = 'Try again'
-            setTimeout(() => {
-                ErrorMsg.innerHTML = ''
-            }, 2500)
-            return ErrorMsg.innerHTML = `<p>${data.txt}</p>`
-        }
-        let ShortURL
-        if( data.short_URL !== undefined) {
+        .then(res => res.json())
+        .then(data => {
+            if (data.msg === 'error') {
+                return showToats('center', data.txt, 'error', false, 2000, false)
+            } else if (data.msg === 'error-url-not-supported') {
+                //position, text, icon, showConfirmButton, timer, toast, reloadPage
+                // fullURL.value = ''
+                submitButton.classList.remove('disabledClick')
+                submitBtn.value = 'Try again'
+                setTimeout(() => {
+                    ErrorMsg.innerHTML = ''
+                }, 2500)
+                return ErrorMsg.innerHTML = `<p>${data.txt}</p>`
+            }
+            let ShortURL
+            if (data.short_URL !== undefined) {
                 ShortURL = `<a href="/${data.short_URL}">${currentWebsite}/${data.short_URL}</a>`
-        }else{
-            ShortURL = '<h2 style="color: red;"> No URL to show! </h2>'
-        }
-        showToats('center', data.msg, data.icon, false, data.timer, true, true)
-        localStorage.setItem("recentUrlId", data.id)
-        fullURL.value =''
-    })
-    .catch(() => showToats('center', 'Error to short a url, Try again Later', 'error', false, 3100, false))
+            } else {
+                ShortURL = '<h2 style="color: red;"> No URL to show! </h2>'
+            }
+            showToats('center', data.msg, data.icon, false, data.timer, true, true)
+            localStorage.setItem("recentUrlId", data.id)
+            fullURL.value = ''
+        })
+        .catch(() => showToats('center', 'Error to short a url, Try again Later', 'error', false, 3100, false))
 })
 
 //Show Public links button..
 showLinksBtnToggle.addEventListener('click', e => {
     // urlsBox.classList.toggle('urls-box')
     e.target.classList.toggle('closeShowLinksBtn')
-    if(e.target.innerText === 'Show public links'){
+    if (e.target.innerText === 'Show public links') {
         e.target.innerText = 'Close public links'
-    }else{
+    } else {
         e.target.innerText = 'Show public links'
-    } 
+    }
 })
 
 //I used just these two lines of jquery because I don't know jquery yet. I know easy to learn it, I will lrean it later <3
-$("#show-public-links").click(function(){
+$("#show-public-links").click(function () {
     $("#urls-box").slideToggle();
 });
 
@@ -262,9 +265,11 @@ function showToats(position, text, icon, showConfirmButton, timer, toast, reload
         showConfirmButton: showConfirmButton,
         timer: timer,
         toast: toast,
-    }).then(()=>{
-        if(reloadPage){
+    }).then(() => {
+        if (reloadPage) {
             window.location.reload();
-        }else{return}
+        } else {
+            return
+        }
     })
 }

@@ -4,12 +4,12 @@
 <head>
     <%- include('./components/_head.ejs') %>
     <%- include('./components/_head-files.ejs') %>
-    <% if(config.showAds) {%> 
-        <%- include('./components/ads/_ad-head-script.ejs') %> 
-    <% } %> 
-    <% if(config.showNavbar) {%> 
-        <script defer src="js/header.js"></script>
-    <% } %> 
+    <% if(config.showAds) {%>
+    <%- include('./components/ads/_ad-head-script.ejs') %>
+    <% } %>
+    <% if(config.showNavbar) {%>
+    <script defer src="js/header.js"></script>
+    <% } %>
     <title><%= config.title %> </title>
 </head>
 
@@ -18,39 +18,39 @@
     <%- include('./components/_header_loader.ejs') %>
     <% } %>
 
-    <% if(config.show_mainTitle || config.show_description) {%> 
-        <section>
-            <div class="top-content">
-                <% if(config.show_mainTitle) {%>
-                    <div class="main-title"><%- config.mainTitle %></div>
-                <% } %>
+    <% if(config.show_mainTitle || config.show_description) {%>
+    <section>
+        <div class="top-content">
+            <% if(config.show_mainTitle) {%>
+            <div class="main-title"><%- config.mainTitle %></div>
+            <% } %>
 
-                <% if(config.show_description) {%>
-                    <div class="main-description">
-                        <p><%- config.description %></p>
-                    </div>
-                <% } %>
+            <% if(config.show_description) {%>
+            <div class="main-description">
+                <p><%- config.description %></p>
             </div>
-        </section>
-    <% } %> 
+            <% } %>
+        </div>
+    </section>
+    <% } %>
 
-    <% if(config.showAds) {%> 
-        <% if(config.showAd1){ %> 
-            <section>
-                <%- include('./components/ads/_ad1-script.ejs') %> 
-            </section>
-        <% } %> 
-    <% } %> 
+    <% if(config.showAds) {%>
+    <% if(config.showAd1){ %>
+    <section>
+        <%- include('./components/ads/_ad1-script.ejs') %>
+    </section>
+    <% } %>
+    <% } %>
 
     <section id="recent-link"></section>
 
-    <% if(config.showAds) {%> 
-        <% if(config.showAd2){ %> 
-            <section>
-                <%- include('./components/ads/_ad2-script.ejs') %> 
-            </section>
-        <% } %> 
-    <% } %> 
+    <% if(config.showAds) {%>
+    <% if(config.showAd2){ %>
+    <section>
+        <%- include('./components/ads/_ad2-script.ejs') %>
+    </section>
+    <% } %>
+    <% } %>
 
     <% if(config.showPublicLinks) {%>
     <section>
@@ -70,7 +70,8 @@
                     <hr>
                     <div class="url shortUrl">
                         <label>Short URL</label>
-                        <a href="/<%= url.shortURL %>" target="_blank"><span class="current-website"></span><%= url.shortURL %></a>
+                        <a href="/<%= url.shortURL %>" target="_blank"><span
+                                class="current-website"></span><%= url.shortURL %></a>
                         <br>
                         <br>
                         <button data-short-url="<%= url.shortURL %>" data-clipboard-text="" class="copy">Copy</button>
@@ -104,7 +105,7 @@
             </div>
 
             <form action="/" method="POST">
-                <% if(config.allows_user_to_create_URL != true){ %>
+                <% if(!config.allows_user_to_create_URL){ %>
                 <div id="msg-error" style="color:orangered; padding:10px 0;">
                     You can't create a URL, Admin disabled this feature at the moment, Try again later
                 </div>
@@ -125,15 +126,15 @@
         </div>
     </section>
 
-    <% if(config.showAds) {%> 
-        <% if(config.showAd3){ %> 
-            <section>
-                <%- include('./components/ads/_ad3-script.ejs') %> 
-            </section>
-        <% } %> 
-    <% } %> 
+    <% if(config.showAds) {%>
+    <% if(config.showAd3){ %>
+    <section>
+        <%- include('./components/ads/_ad3-script.ejs') %>
+    </section>
+    <% } %>
+    <% } %>
 
-    <%- include('./components/_footer.ejs') %> 
+    <%- include('./components/_footer.ejs') %>
 
 </body>
 

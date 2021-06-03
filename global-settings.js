@@ -65,12 +65,6 @@ let config = {
             linkName: 'Home',
             linkURL: '/',
         },
-
-        //Docs page
-        {
-            linkName: '<span style="color: yellow;">ReadMe</span>',
-            linkURL: '/pages/docs',
-        },
         //End docs page
         {
             linkName: 'Contact',
