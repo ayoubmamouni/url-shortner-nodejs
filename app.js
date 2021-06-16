@@ -3,21 +3,17 @@ const mongoose = require('mongoose')
 const path = require('path')
 const str = require('@supercharge/strings')
 const config = require('./global-settings')
-// const fs = require('fs')
-//require shortSchema
 const ShortURL = require('./model/shortSchema')
 
 const app = express()
-
-
-//in development mode, We dont need those (dotenv & morgan) in production mode!
+//in development mode, We dont need (dotenv & morgan) modules in production mode!
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
     const logger = require('morgan')
     app.use(logger('dev'))
 }
 
-//connected to mongodb using mongoose
+//connected to mongodb with mongoose
 mongoose.connect(process.env.URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -57,6 +53,12 @@ app.get('/', async (req, res) => {
         config
     })
 })
+
+//robots .txt for stupid search engines..
+app.get('/robots.txt', (req, res) => {
+    res.sendFile(__dirname + '/robots.txt')
+})
+
 
 //On post full URL
 app.post('/', async (req, res) => {
@@ -165,21 +167,25 @@ app.post('/', async (req, res) => {
 
 //get shortUrl 
 app.get('/:id', async (req, res) => {
-    const result = await ShortURL.findOne({
-        shortURL: req.params.id
-    })
-    //if no shortURL return to home page
-    if (result == null) {
-        return res.render('Not-Found', {
-            config
+    try {
+        const result = await ShortURL.findOne({
+            shortURL: req.params.id
         })
+        //if no shortURL return to home page
+        if (result == null) {
+            return res.status(404).render('Not-Found', {
+                config
+            })
+        }
+        //if not equal null, then add +1 to views of short URL
+        await result.views++;
+        //then save
+        await result.save()
+        //and redirect to full url
+        res.redirect(result.fullURL)
+    } catch (err) {
+
     }
-    //if not equal null, then add +1 to views of short URL
-    await result.views++;
-    //then save
-    await result.save()
-    //and redirect to full url
-    res.redirect(result.fullURL)
 })
 
 //when a user clicks on 'refresh' button on recent URL
@@ -226,6 +232,13 @@ app.put('/updateRecentURL/:id', async (req, res) => {
         msg: config.link_updated_successful_message
     })
 })
+
+// //handle 404 errors
+// app.use((req, res, next) => {
+//     return res.status(404).render('Not-Found', {
+//         config
+//     })
+// })
 
 // let port =  process.env.PORT || 3000
 // app.listen(port, () => console.log(`Server started at ${port}`))

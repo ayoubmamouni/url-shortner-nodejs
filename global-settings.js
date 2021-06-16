@@ -92,38 +92,9 @@ let config = {
             linkName: 'ExternalLink2',
             linkURL: 'https://example.com',
         },
-        {
-            linkName: 'ExternalLink3',
-            linkURL: 'https://example.com',
-        },
-    ],
-
-    showSocialIcons: false,
-    //Will shown in footer- in bottom of website
-    //Fontawesome icons/ or any icons
-    socialIcons: [{
-            icon: '', //fas fa-github //You can find icons in fontawesome.com
-            linkURL: 'https://facebook.com'
-        },
-        {
-            icon: '',
-            linkURL: 'https://instagram.com'
-        },
-        {
-            icon: '',
-            linkURL: 'https://github.com'
-        },
-        {
-            icon: '',
-            linkURL: 'https://linkdin.com'
-        },
-        {
-            icon: '',
-            linkURL: 'https://youtube.com'
-        },
     ],
     show_mainTitle: true,
-    mainTitle: `<b>(Demo) <br> <h2 style="color: white;">This website still under development (Not completed yet) <span style="color:yellow;">So if you found any issue please contact me at iksdev@yahoo.com</span></h2></b>`,
+    mainTitle: `<h1>Free URL shortner </h1>`,
     show_description: true,
     description: 'Short any URL at anytime without login',
     //basic SEO
@@ -131,7 +102,7 @@ let config = {
     //#TODO
     //Error Page Title
     errorTitle: `Page not Found (404) - ${websiteName}`,
-    footerText: `<span id="site">${websiteName}</span> By Ayoub-Mamouni (v1.0.0)<br/> Copyright © All rights reserved ${copyRightYear}`
+    footerText: `<span id="site">${websiteName}</span> Coded with ❤ by Ayoub-Mamouni (v1.0.0)<br/> Copyright © All rights reserved ${copyRightYear}`
 }
 
 module.exports = config;
