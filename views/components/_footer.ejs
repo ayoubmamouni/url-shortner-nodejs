@@ -1,14 +1,38 @@
 <noscript>You need to enable JavaScript to make this website working.</noscript>
+
+<!-- ----------You can delete this part-->
+<style>
+    .sourceCode {
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .sourceCode a {
+        text-decoration: none;
+        border: 2px solid aqua;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 0.5em;
+        border-radius: 3px;
+        color: navy;
+        background-color: orangered;
+    }
+</style>
+<div class="sourceCode">
+    <a href="https://github.com/ayoubmamouni/url-shortner-nodejs">Source Code ~ Github</a>
+</div>
+<!-- ------------------------------------>
+
 <footer>
     <% if(config.showSocialIcons){ %>
-        <div class="social-links">
-            <% config.socialIcons.forEach(icon=>{%>
-                <div>
-                    <i class="<%= icon.icon %>"></i>
-                </div>
-            <%})%>
+    <div class="social-links">
+        <% config.socialIcons.forEach(icon=>{%>
+        <div>
+            <i class="<%= icon.icon %>"></i>
         </div>
-    <% } %> 
+        <%})%>
+    </div>
+    <% } %>
     <div class="copyright-info">
         <p><%- config.footerText %></p>
     </div>
