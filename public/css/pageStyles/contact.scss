@@ -1,0 +1,135 @@
+@import '../website-colors';
+@import '../utils';
+@import '../header-loader';
+@import '../footer';
+
+@mixin forMobiles{
+    @media (max-width: 500px) {
+        margin: .5rem 10px;
+    }
+}
+@mixin forTabletsDesktops{
+    @media (min-width: 800px) {
+        min-width: 650px;
+    }
+}
+body{
+    background: $Color5;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    
+}
+.contact{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .container{
+        background: darken($Color5, 5);
+        margin: .3rem 2rem;
+        overflow: auto;
+        border-radius: 10px;
+        max-width: 700px;
+        padding: 1.3rem;
+        transition: 500ms;
+        border: 2px solid aqua;
+        @include forMobiles();
+        width: 95%;
+        @include forTabletsDesktops();
+
+        .contact-title{
+            padding: .5rem 0;
+            margin-bottom: 15px;
+            border-bottom: 5px solid lighten($Color5, 5);
+            h2{
+                color: white;
+                opacity: .7;
+            }
+        }
+        .contact-description{
+            background: darken($Color5, 20);
+            border: 1px solid lighten($Color5, 1);
+            border-radius: 5px;
+            padding: .5rem;
+            b{
+                font-size: 20px;
+                color: lighten($Color5, 5);
+            }
+            p{
+                color: white;
+                opacity: .7;
+                line-height: 1.4rem;
+                font-size: .8rem;
+            }
+        }
+        .contact-content{
+            margin-top: .5rem;
+            padding: .5rem;
+            border-radius: 5px;
+            .contact-mail-list, .contact-phone-numbers, .contact-websites,.adress{
+                // background: #000;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                border-bottom: 5px solid lighten($Color5, 5);
+                .desc{
+                    margin-top: .5rem;
+                    font-size: 20px;
+                    color: lighten($Color5, 20);
+                }
+                .item{
+                    display: flex;
+                    flex-direction: column;
+                    border-left: 5px solid rgba(0, 255, 255, 0.593);
+                    padding-left: .5rem;
+                    margin: .6rem 0;
+                    transition: 230ms;
+                    &:hover{
+                        border-left: 5px solid aqua;
+                        margin-left: .5rem;
+                    }
+                    b{
+                        opacity: .7;
+                        border-bottom: 1px solid lighten($Color5, 1);
+                        padding: .2rem;
+                    }
+                    a{
+                        text-decoration: none;
+                        color: rgb(24, 97, 207);
+                        margin: 7px 0;
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+            .contact-phone-numbers{
+                .item{
+                    border-left: 5px solid rgba(142, 13, 88, 0.538);
+                    &:hover{
+                        border-left: 5px solid rgb(142, 13, 88);
+                    }
+                }
+            }
+            .adress{
+                .item{
+                    border-left: 5px solid rgba(141, 154, 221, 0.627);
+                    &:hover{
+                        border-left: 5px solid rgb(141, 154, 221);
+                    }
+                    p{
+                        color: rgb(141, 154, 221);
+                    }
+                }
+            }
+            .contact-websites{
+                border-bottom: none;
+                .item{
+                    border-left: 5px solid rgba(13, 142, 54, 0.538);
+                    &:hover{
+                        border-left: 5px solid rgb(13, 142, 54);
+                    }
+                }
+            }
+        }
+    }
+}

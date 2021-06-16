@@ -1,0 +1,191 @@
+@import './website-colors';
+@mixin forMobiles{
+    @media (max-width: 500px) {
+        margin: .5rem 10px;
+    }
+}
+@mixin forTabletsDesktops{
+    @media (min-width: 800px) {
+        min-width: 650px;
+    }
+}
+@mixin buttonStyle{
+    border-radius: 7px;
+    font-size: 18px;
+    border: 1px solid navy;
+    transition: 150ms;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    &:active{
+        transform: scale(.96);
+    }
+}
+
+@import './utils';
+@import './header-loader';
+@import './top-content';
+@import './recent-link';
+@import './ad-style';
+@import './refresh-new-clicks';
+@import './public-link-choice';
+@import './footer';
+
+body{
+    background: $Color5;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(203, 203, 169);
+    overflow-x: hidden;
+}
+
+.header{
+    padding: 2rem 1rem;
+    background-color: $Color2;
+    text-align: center;
+    h1{
+        color: white;
+    }
+}
+
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.showLinksBox-button{
+    text-align: center;
+    margin: .5rem 3rem;
+    @include forMobiles();
+    width: 90%;
+    @include forTabletsDesktops();
+    #show-public-links{
+        @include buttonStyle();
+        padding: .6rem 3rem;
+        color: white;
+        background: rgb(15, 137, 15);
+        border: 2px solid aqua;
+    }
+    .closeShowLinksBtn{
+        background: rgb(197, 54, 10) !important;
+    }
+}
+
+
+#urls-box{
+    overflow: auto;
+    border-radius: 10px;
+    max-width: 700px;
+    max-height: 500px;
+    overflow-y: scroll;
+    display: none;
+    background: $Color;
+    width: 95%;
+    transition: 200ms;
+    border: 2px solid aqua;
+    @include forMobiles();
+    @include forTabletsDesktops();
+    .urls-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    hr{
+        background: rgb(89, 81, 81);
+        border: none;
+        height: 3px;
+    }
+    .url-item{
+        background: lighten($Color2, 9);
+        margin: .3rem 2rem;
+        overflow: auto;
+        border-radius: 10px;
+        max-width: 600px;
+        @include forMobiles();
+        width: 95%;
+        @include forTabletsDesktops();
+        .url{
+            padding: .7rem;
+            width: 80%;
+            a{
+                color: #fb7a34;
+                margin: 0 10px;
+            }
+            .copy{
+                @include buttonStyle();
+                padding: .6rem 3rem;
+                background: rgb(71, 82, 106);
+                color: white;
+            }
+        }
+        .labelDetails{
+            .viewsCount{
+                color: yellowgreen;
+                border-radius: 3px;
+                border: 1px solid aqua;
+                padding: 0 2px;
+                margin: 0 3px;
+                text-align: center;
+            }
+        }
+        .date{
+            color: yellow;
+            opacity: 0.5;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 10px;
+        }
+    }
+}
+
+.container{
+    background: $Color2;
+    margin: .3rem 2rem;
+    overflow: auto;
+    border-radius: 10px;
+    max-width: 700px;
+    padding: 1.3rem;
+    transition: 250ms;
+    border: 2px solid aqua;
+    @include forMobiles();
+    width: 95%;
+    @include forTabletsDesktops();
+    label{
+        color: yellowgreen;
+        font-size: 20px;
+        margin: 10px 0;
+    }
+    .main-input{
+        #fullURL{
+            width: 100%;
+            padding: 10px;
+            font-size: 20px;
+            border-radius:3rem;
+            border: 2px solid aqua;
+            outline: none;
+            color: $Color1;
+            margin: 1rem 0;
+            background-color: $Color6;
+            transition: 150ms;
+            max-width: 450px;
+            &::placeholder{
+                color: $Color1;
+                opacity: .4;
+            }
+            &:focus{
+                transform: scale(1.03);
+                background-color: lighten($Color6, 30);
+            }
+        }
+        #submit-button{
+            @include buttonStyle();
+            padding: 12px 25px;
+            background: rgb(37, 96, 222);
+            color: white;
+            border-radius:3rem;
+            border: 1px solid aqua;
+        }
+    }
+}
