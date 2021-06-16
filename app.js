@@ -43,15 +43,19 @@ if (config.showNavbar) {
 
 //Get home page
 app.get('/', async (req, res) => {
-    const urls = await ShortURL.find({
-        showInPublicLinks: true, //get only public links
-    }).sort({
-        postedOn: -1
-    })
-    res.render('home', {
-        data: urls,
-        config
-    })
+    try {
+        const urls = await ShortURL.find({
+            showInPublicLinks: true, //get only public links
+        }).sort({
+            postedOn: -1
+        }).limit(config.maxLength_PublicLinks)
+        res.render('home', {
+            data: urls,
+            config
+        })
+    } catch (err) {
+        res.status(500).send('OOPs, We have a problem in our server. Please try again.')
+    }
 })
 //robots .txt for stupid search engines..
 app.get('/robots.txt', (req, res) => {

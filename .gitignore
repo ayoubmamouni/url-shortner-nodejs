@@ -1,5 +1,3 @@
 /node_modules
-# Please uncomment .env below (remove #)
-.env 
-# We don't need scss files in production mode
-#/public/css/*.scss
+.env
+# /public/css/*.scss
