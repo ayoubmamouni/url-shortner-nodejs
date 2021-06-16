@@ -53,12 +53,10 @@ app.get('/', async (req, res) => {
         config
     })
 })
-
 //robots .txt for stupid search engines..
 app.get('/robots.txt', (req, res) => {
     res.sendFile(__dirname + '/robots.txt')
 })
-
 
 //On post full URL
 app.post('/', async (req, res) => {
