@@ -10,7 +10,7 @@ Built with
 - JavaScript (This project 90% depends on JavaScript)
 - Ejs (I used Ejs as a template engine for this project)
 - MongoDb (I used mongoose for connect to mongoDb)
-- NodeJs as backend (express framework)
+- NodeJs for backend with (express framework)
 
 ## Features
 
