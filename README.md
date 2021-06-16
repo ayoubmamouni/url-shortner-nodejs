@@ -20,14 +20,15 @@ Built with
 - Ads, I created 3 Places for banner Ads. You can turn them On or Off from [Global-settings file].
 - Some animations
 - Basic security.
+- QR Code
 
 # [Priview](http://9sr.xyz/)
 
 ## Installation
 
-You need [Node.js](https://nodejs.org/) v10+
-Git version controll [Git](https://git-scm.com/)
-MongoDb [MongoDb](https://www.mongodb.com/try/download/community)
+You need [Node.js](https://nodejs.org/) v10+ \  
+Git version controll [Git](https://git-scm.com/) \
+MongoDb [MongoDb](https://www.mongodb.com/try/download/community) \
 
 When you done, open your terminal
 
