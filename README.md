@@ -26,9 +26,9 @@ Built with
 
 ## Installation
 
-You need [Node.js](https://nodejs.org/) v10+ \  
+You need [Node.js](https://nodejs.org/) v10+ \
 Git version controll [Git](https://git-scm.com/) \
-MongoDb [MongoDb](https://www.mongodb.com/try/download/community) \
+MongoDb [MongoDb](https://www.mongodb.com/try/download/community)
 
 When you done, open your terminal
 
