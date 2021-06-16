@@ -22,7 +22,7 @@ Built with
 - Basic security.
 - QR Code
 
-# [Priview](http://9sr.xyz/)
+# [Preview](http://9sr.xyz/)
 
 ## Installation
 
