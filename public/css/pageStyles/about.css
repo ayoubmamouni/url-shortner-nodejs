@@ -10,8 +10,8 @@
 }
 
 header {
-  background-color: #1c333c;
-  border-bottom: 5px solid #417488;
+  background-color: #102137;
+  border-bottom: 5px solid #29548e;
   height: 70px;
   display: -ms-grid;
   display: grid;
@@ -97,7 +97,7 @@ header nav .logo {
 }
 
 header nav .logo #logo {
-  color: #fc6e20;
+  color: #5584ac;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 20px;
 }
@@ -119,9 +119,9 @@ header nav ul {
 
 @media screen and (max-width: 992px) {
   header nav ul {
-    background-color: #1c333c;
-    border-left: 5px solid #417488;
-    border-bottom: 5px solid #417488;
+    background-color: #102137;
+    border-left: 5px solid #29548e;
+    border-bottom: 5px solid #29548e;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -153,7 +153,7 @@ header nav ul li {
 
 header nav ul li a {
   text-decoration: none;
-  color: #fc6e20;
+  color: #5584ac;
   font-weight: bold;
   position: relative;
 }
@@ -163,7 +163,7 @@ header nav ul li a:before {
   width: 0%;
   height: 5px;
   border-radius: 5px;
-  background-color: #fc6e20;
+  background-color: #5584ac;
   position: absolute;
   top: 1.30rem;
   -webkit-transition: 200ms width ease-in-out;
@@ -343,20 +343,20 @@ footer .social-links div {
 }
 
 footer .social-links div i {
-  color: dlighten(#284854, 10);
+  color: dlighten(#183153, 10);
   width: 100%;
   height: 100%;
-  background: arken(#284854, 10);
+  background: arken(#183153, 10);
   border-radius: .5rem;
   font-size: 2rem;
 }
 
 footer #site {
-  color: #fc6e20;
+  color: #5584ac;
 }
 
 body {
-  background: #284854;
+  background: #183153;
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
@@ -372,7 +372,7 @@ body {
 }
 
 .about .container {
-  background: #203943;
+  background: #12253f;
   margin: .3rem 2rem;
   overflow: auto;
   border-radius: 10px;
@@ -402,8 +402,8 @@ body {
 
 .about .container .about-card .card-title h1 {
   padding-bottom: 10px;
-  color: #345d6c;
-  border-bottom: 5px solid #305765;
+  color: #20416f;
+  border-bottom: 5px solid #1e3d67;
 }
 
 .about .container .about-card .about-subtitle {
@@ -420,18 +420,18 @@ body {
 .about .container .about-card .item {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
-  border: 1px solid #2a4b57;
+  border: 1px solid #193357;
 }
 
 .about .container .about-card .item b {
   margin: 0.5rem 0;
-  color: #386677;
+  color: #23487b;
 }
 
 .about .container .about-card .item p {
   line-height: 1.3rem;
   font-size: 14px;
-  color: #bfbfb2;
+  color: #fdfcfb;
   opacity: .7;
 }
 /*# sourceMappingURL=about.css.map */

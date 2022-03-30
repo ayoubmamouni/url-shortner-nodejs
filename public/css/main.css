@@ -10,8 +10,8 @@
 }
 
 header {
-  background-color: #1c333c;
-  border-bottom: 5px solid #417488;
+  background-color: #102137;
+  border-bottom: 5px solid #29548e;
   height: 70px;
   display: -ms-grid;
   display: grid;
@@ -97,7 +97,7 @@ header nav .logo {
 }
 
 header nav .logo #logo {
-  color: #fc6e20;
+  color: #5584ac;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 20px;
 }
@@ -119,9 +119,9 @@ header nav ul {
 
 @media screen and (max-width: 992px) {
   header nav ul {
-    background-color: #1c333c;
-    border-left: 5px solid #417488;
-    border-bottom: 5px solid #417488;
+    background-color: #102137;
+    border-left: 5px solid #29548e;
+    border-bottom: 5px solid #29548e;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -153,7 +153,7 @@ header nav ul li {
 
 header nav ul li a {
   text-decoration: none;
-  color: #fc6e20;
+  color: #5584ac;
   font-weight: bold;
   position: relative;
 }
@@ -163,7 +163,7 @@ header nav ul li a:before {
   width: 0%;
   height: 5px;
   border-radius: 5px;
-  background-color: #fc6e20;
+  background-color: #5584ac;
   position: absolute;
   top: 1.30rem;
   -webkit-transition: 200ms width ease-in-out;
@@ -277,7 +277,7 @@ header nav ul li a.externalLink:before {
 }
 
 .top-content {
-  background: #203943;
+  background: #12253f;
   margin: .3rem 2rem;
   overflow: auto;
   border-radius: 10px;
@@ -291,7 +291,7 @@ header nav ul li a.externalLink:before {
 
 @media (max-width: 500px) {
   .top-content {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -302,7 +302,7 @@ header nav ul li a.externalLink:before {
 }
 
 .top-content .main-title {
-  border-bottom: 5px solid #386677;
+  border-bottom: 5px solid #23487b;
   padding-bottom: 10px;
   margin-bottom: 10px;
   display: -webkit-box;
@@ -321,7 +321,7 @@ header nav ul li a.externalLink:before {
   padding-bottom: 2px;
   font-size: 12px;
   font-family: 'Courier New', Courier, monospace;
-  color: #619db4;
+  color: #3d77c7;
 }
 
 .top-content .main-description p {
@@ -340,8 +340,8 @@ header nav ul li a.externalLink:before {
 
 #recent-link .url-item {
   border: 2px solid aqua;
-  background: #494949;
-  margin: .3rem 2rem;
+  background: #2c70a2;
+  margin: 0.3rem 2rem;
   overflow: auto;
   border-radius: 10px;
   max-width: 700px;
@@ -350,7 +350,7 @@ header nav ul li a.externalLink:before {
 
 @media (max-width: 500px) {
   #recent-link .url-item {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -361,12 +361,12 @@ header nav ul li a.externalLink:before {
 }
 
 #recent-link .url-item .url {
-  padding: .7rem;
+  padding: 0.7rem;
   width: 95%;
 }
 
 #recent-link .url-item .url a {
-  color: #fb7a34;
+  color: #95d1cc;
   margin: 0 10px;
 }
 
@@ -379,7 +379,7 @@ header nav ul li a.externalLink:before {
   outline: none;
   cursor: pointer;
   text-align: center;
-  padding: .3rem 2rem;
+  padding: 0.3rem 2rem;
   background: #47526a;
   color: white;
 }
@@ -406,12 +406,12 @@ header nav ul li a.externalLink:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: .3rem 0;
+  padding: 0.3rem 0;
 }
 
 #recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink select {
   padding: 3px;
-  background: #356070;
+  background: #214473;
   border: 1px solid aqua;
   color: white;
   outline: none;
@@ -420,14 +420,14 @@ header nav ul li a.externalLink:before {
 }
 
 #recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink select option {
-  background: #264551;
+  background: #172f4f;
 }
 
 #recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink #updatePublicPrivateLink {
   padding: 3px 6px;
   margin: 5px 0;
-  background: #284854;
-  color: #fc6e20;
+  background: #183153;
+  color: #5584ac;
   font-size: 14px;
   cursor: pointer;
   -webkit-user-select: none;
@@ -462,8 +462,8 @@ header nav ul li a.externalLink:before {
 }
 
 #recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink #updatePublicPrivateLink #update-icon .animatioDivs div:nth-child(even) {
-  -webkit-animation: divsAnimationsEven 500ms infinite alternate linear;
-          animation: divsAnimationsEven 500ms infinite alternate linear;
+  -webkit-animation: divsAnimationsEven 500ms infinite alternate linear;
+          animation: divsAnimationsEven 500ms infinite alternate linear;
 }
 
 #recent-link .url-item .views code {
@@ -471,13 +471,13 @@ header nav ul li a.externalLink:before {
 }
 
 #recent-link .url-item #qrcode-label {
-  color: #b8b8aa;
+  color: #f7f5f2;
   padding-left: 1rem;
 }
 
 #recent-link .url-item #qrcode {
   padding: 1rem;
-  padding-top: .3rem;
+  padding-top: 0.3rem;
 }
 
 .ad-container {
@@ -491,7 +491,7 @@ header nav ul li a.externalLink:before {
 
 @media (max-width: 500px) {
   .ad-container {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -653,7 +653,7 @@ header nav ul li a.externalLink:before {
 }
 
 .public-link-choice {
-  background: #284854;
+  background: #183153;
   padding: 10px;
   border: 1px solid aqua;
   margin-bottom: 10px;
@@ -661,13 +661,13 @@ header nav ul li a.externalLink:before {
 }
 
 .public-link-choice .checkbox-message label {
-  color: #b8b8aa;
+  color: #f7f5f2;
   font-size: 15px;
 }
 
 .public-link-choice select {
   padding: 10px;
-  background: #356070;
+  background: #214473;
   border: 1px solid aqua;
   color: white;
   margin: 10px 0;
@@ -677,7 +677,7 @@ header nav ul li a.externalLink:before {
 }
 
 .public-link-choice select option {
-  background: #264551;
+  background: #172f4f;
 }
 
 footer {
@@ -747,20 +747,20 @@ footer .social-links div {
 }
 
 footer .social-links div i {
-  color: dlighten(#284854, 10);
+  color: dlighten(#183153, 10);
   width: 100%;
   height: 100%;
-  background: arken(#284854, 10);
+  background: arken(#183153, 10);
   border-radius: .5rem;
   font-size: 2rem;
 }
 
 footer #site {
-  color: #fc6e20;
+  color: #5584ac;
 }
 
 body {
-  background: #284854;
+  background: #183153;
   font-family: Arial, Helvetica, sans-serif;
   color: #cbcba9;
   overflow-x: hidden;
@@ -768,7 +768,7 @@ body {
 
 .header {
   padding: 2rem 1rem;
-  background-color: #323232;
+  background-color: #22577e;
   text-align: center;
 }
 
@@ -795,13 +795,13 @@ section {
 
 .showLinksBox-button {
   text-align: center;
-  margin: .5rem 3rem;
+  margin: 0.5rem 3rem;
   width: 90%;
 }
 
 @media (max-width: 500px) {
   .showLinksBox-button {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -820,7 +820,7 @@ section {
   outline: none;
   cursor: pointer;
   text-align: center;
-  padding: .6rem 3rem;
+  padding: 0.6rem 3rem;
   color: white;
   background: #0f890f;
   border: 2px solid aqua;
@@ -842,7 +842,7 @@ section {
   max-height: 500px;
   overflow-y: scroll;
   display: none;
-  background: #2f0642;
+  background: #3a3845;
   width: 95%;
   -webkit-transition: 200ms;
   transition: 200ms;
@@ -851,7 +851,7 @@ section {
 
 @media (max-width: 500px) {
   #urls-box {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -881,8 +881,8 @@ section {
 }
 
 #urls-box .url-item {
-  background: #494949;
-  margin: .3rem 2rem;
+  background: #2c70a2;
+  margin: 0.3rem 2rem;
   overflow: auto;
   border-radius: 10px;
   max-width: 600px;
@@ -891,7 +891,7 @@ section {
 
 @media (max-width: 500px) {
   #urls-box .url-item {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -902,12 +902,12 @@ section {
 }
 
 #urls-box .url-item .url {
-  padding: .7rem;
+  padding: 0.7rem;
   width: 80%;
 }
 
 #urls-box .url-item .url a {
-  color: #fb7a34;
+  color: #95d1cc;
   margin: 0 10px;
 }
 
@@ -920,7 +920,7 @@ section {
   outline: none;
   cursor: pointer;
   text-align: center;
-  padding: .6rem 3rem;
+  padding: 0.6rem 3rem;
   background: #47526a;
   color: white;
 }
@@ -942,13 +942,13 @@ section {
 #urls-box .url-item .date {
   color: yellow;
   opacity: 0.5;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   margin-top: 10px;
 }
 
 .container {
-  background: #323232;
-  margin: .3rem 2rem;
+  background: #22577e;
+  margin: 0.3rem 2rem;
   overflow: auto;
   border-radius: 10px;
   max-width: 700px;
@@ -961,7 +961,7 @@ section {
 
 @media (max-width: 500px) {
   .container {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -984,38 +984,38 @@ section {
   border-radius: 3rem;
   border: 2px solid aqua;
   outline: none;
-  color: #1b1b1b;
+  color: #5584ac;
   margin: 1rem 0;
-  background-color: #b8b8aa;
+  background-color: #f7f5f2;
   -webkit-transition: 150ms;
   transition: 150ms;
   max-width: 450px;
 }
 
 .container .main-input #fullURL::-webkit-input-placeholder {
-  color: #1b1b1b;
-  opacity: .4;
+  color: #5584ac;
+  opacity: 0.4;
 }
 
 .container .main-input #fullURL:-ms-input-placeholder {
-  color: #1b1b1b;
-  opacity: .4;
+  color: #5584ac;
+  opacity: 0.4;
 }
 
 .container .main-input #fullURL::-ms-input-placeholder {
-  color: #1b1b1b;
-  opacity: .4;
+  color: #5584ac;
+  opacity: 0.4;
 }
 
 .container .main-input #fullURL::placeholder {
-  color: #1b1b1b;
-  opacity: .4;
+  color: #5584ac;
+  opacity: 0.4;
 }
 
 .container .main-input #fullURL:focus {
   -webkit-transform: scale(1.03);
           transform: scale(1.03);
-  background-color: #fefefd;
+  background-color: white;
 }
 
 .container .main-input #submit-button {
