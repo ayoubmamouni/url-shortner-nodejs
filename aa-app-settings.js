@@ -8,12 +8,13 @@ let config = {
   title: "Free URL Shotener - No registration required!",
   showNavbar: true, // turn off if you want to hide navigation bar
   showPublicLinks: true, // turn off if you want to hide public links
-  maxLength_PublicLinks: 50, // maximum you want to desplay in public links
+  maxLength_PublicLinks: 100, // maximum you want to desplay in public links
   RandomText_length: 5, //How many random latters you wand to generate for short URL
   user_can_Add_Adults_Link: false, //false = no, true = yes
   allows_user_to_create_URL: true, //false = no, true = yes
   allow_to_short_shorterURL: false, //false = no, true = yes
   allow_to_short_shorterURL_Number_Length: shortURL_max,
+  showLinksCounter: true,
   //message text
   Not_found_title: "Page Not Found",
   Not_found_description: "This page doesn't exist or has been deleted",
@@ -97,7 +98,7 @@ let config = {
   show_mainTitle: true,
   mainTitle: `<h3>Free URL Shotener - No registration required!</h3>`,
   show_description: true,
-  description: "Make your URL shorter for free and without login.",
+  description: "Make your URL shorter for free and without registration.",
   //basic SEO
   metaDescription: "Free URL Shotener - No registration required!", //For search engine.. Add you custom description
   //#TODO

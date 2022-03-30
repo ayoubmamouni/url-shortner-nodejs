@@ -19,7 +19,7 @@
     <% } %>
 
     <% if(config.show_mainTitle || config.show_description) {%>
-    <section>
+    <section class="main-title-description">
         <div class="top-content">
             <% if(config.show_mainTitle) {%>
             <div class="main-title"><%- config.mainTitle %></div>
@@ -33,6 +33,53 @@
         </div>
     </section>
     <% } %>
+
+
+    <section class="main-app-Input">
+        <div class="container">
+            <form action="/" method="POST">
+                <div class="create-short-url">
+                    <div class="top-url-creation-content">
+                        <% if(!config.allows_user_to_create_URL){ %>
+                        <div id="msg-error" style="color:#FF5C8D; padding:10px 0;">
+                            OOPS, You can't short your URL at the moment, Admin disabled this feature for now, Try again later
+                        </div>
+                        <label for="fullURL" style="color:rgb(246, 85, 26);">Try later!</label>
+                        <div class="main-input">
+                            <input type="url" placeholder="Enter full URL" id="fullURL" name="fullURL" disabled="disabled"
+                                required />
+                        </div>
+                        <% }else{ %>
+                        <div id="msg-error" style="color:orangered; padding:10px 0;"></div>
+                    </div>
+                    <div class="main-input">
+                        <label for="fullURL">Past Your URL to short it.</label>
+                        <input type="url" placeholder="Enter full URL" id="fullURL" name="fullURL" required />
+                        <div class="public-link-choice">
+                            <div class="checkbox-message">
+                                <label>Show URL on public URLs?</label>
+                            </div>
+                            <select name="showInPublicLinks" id="showInPublicLinks">
+                                <option value="true">Yes!</option>
+                                <option value="false">No, Please.</option>
+                            </select>
+                        </div>
+                        <input type="submit" value="Short it." id="submit-button">
+                    </div>
+                    <% } %>
+                </div>
+            </form>
+            <% if(config.showLinksCounter) {%> 
+
+                <div id="total-urls">
+                    <p id="total-urls-title">Total URLs: </p>
+                    <code id="counter-urls"><%= counter %></code>
+                </div>
+            <% }%>
+        </div>
+    </section>
+
+
 
     <% if(config.showAds) {%>
     <% if(config.showAd1){ %>
@@ -92,39 +139,7 @@
     </section>
     <% } %>
 
-    <section>
-        <div class="container">
-            <div class="public-link-choice">
-                <div class="checkbox-message">
-                    <label>Would you like to display your link in public Links?</label>
-                </div>
-                <select name="showInPublicLinks" id="showInPublicLinks">
-                    <option value="true">Yes!</option>
-                    <option value="false">No, Please.</option>
-                </select>
-            </div>
-
-            <form action="/" method="POST">
-                <% if(!config.allows_user_to_create_URL){ %>
-                <div id="msg-error" style="color:orangered; padding:10px 0;">
-                    You can't create a URL, Admin disabled this feature at the moment, Try again later
-                </div>
-                <label for="fullURL" style="color:rgb(246, 85, 26);">Try later!</label>
-                <div class="main-input">
-                    <input type="url" placeholder="Enter full URL" id="fullURL" name="fullURL" disabled="disabled"
-                        required />
-                </div>
-                <% }else{ %>
-                <div id="msg-error" style="color:orangered; padding:10px 0;"></div>
-                <label for="fullURL">Enter full URL</label>
-                <div class="main-input">
-                    <input type="url" placeholder="Enter full URL" id="fullURL" name="fullURL" required />
-                    <input type="submit" value="Shrink" id="submit-button">
-                </div>
-                <% } %>
-            </form>
-        </div>
-    </section>
+   
 
     <% if(config.showAds) {%>
     <% if(config.showAd3){ %>

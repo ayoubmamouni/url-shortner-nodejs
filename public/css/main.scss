@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
 @import "./website-colors";
 @mixin forMobiles {
   @media (max-width: 500px) {
@@ -33,9 +34,8 @@
 
 body {
   background: $Color5;
-  font-family: Arial, Helvetica, sans-serif;
-  color: rgb(203, 203, 169);
-  overflow-x: hidden;
+  font-family: "Ubuntu", sans-serif;
+  color: #effffd;
 }
 
 .header {
@@ -53,6 +53,19 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#total-urls {
+  display: flex;
+  align-items: center;
+  #total-urls-title {
+    color: #f5f5f5;
+    opacity: 0.6;
+    margin-right: 10px;
+  }
+  #counter-urls {
+    color: #5b7db1;
+  }
 }
 
 .showLinksBox-button {
@@ -139,51 +152,61 @@ section {
 }
 
 .container {
-  background: $Color2;
+  //   background: $Color2;
+  background: darken($Color5, 2);
   margin: 0.3rem 2rem;
   overflow: auto;
   border-radius: 10px;
-  max-width: 700px;
   padding: 1.3rem;
   transition: 250ms;
-  border: 2px solid aqua;
-  @include forMobiles();
   width: 95%;
-  @include forTabletsDesktops();
   label {
-    color: yellowgreen;
-    font-size: 20px;
+    color: #42c2ff;
+    font-size: 30px;
     margin: 10px 0;
   }
   .main-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     #fullURL {
-      width: 100%;
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+      width: 70%;
       padding: 10px;
       font-size: 20px;
-      border-radius: 3rem;
-      border: 2px solid aqua;
+      border-radius: 3px;
+      border: 0;
       outline: none;
       color: $Color1;
-      margin: 1rem 0;
+      margin: 10px 0;
+      margin-bottom: 0;
       background-color: $Color6;
-      transition: 150ms;
-      max-width: 450px;
+      transition: 50ms;
+      //   max-width: 450px;
       &::placeholder {
         color: $Color1;
         opacity: 0.4;
       }
       &:focus {
-        transform: scale(1.03);
+        transform: scale(1.01);
         background-color: lighten($Color6, 30);
       }
     }
     #submit-button {
       @include buttonStyle();
       padding: 12px 25px;
-      background: rgb(37, 96, 222);
-      color: white;
-      border-radius: 3rem;
-      border: 1px solid aqua;
+      background: #00b4d8;
+      color: #caf0f8;
+      border-radius: 3px;
+      width: 120px;
+      border: 0;
+      &:active {
+        position: relative;
+        top: 1px;
+      }
     }
   }
 }

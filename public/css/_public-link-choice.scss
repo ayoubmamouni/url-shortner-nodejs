@@ -1,25 +1,25 @@
-.public-link-choice{
-    background: $Color5;
-    padding: 10px;
-    border: 1px solid aqua;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    .checkbox-message{
-        label{
-            color: $Color6;
-            font-size: 15px;
-        }
+.public-link-choice {
+  background: lighten($Color5, 4);
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  border-radius: 3px;
+  .checkbox-message {
+    label {
+      color: $Color6;
+      font-size: 15px;
+      margin-right: 5px;
     }
-    select{
-        padding: 10px;
-        background: lighten($Color5, 8);
-        border: 1px solid aqua;
-        color: white;
-        margin: 10px 0;
-        transition: 200ms;
-        outline: none;
-        option{
-            background: darken($Color5, 1);
-        }
+  }
+  select {
+    border: 0;
+    padding: 5px;
+    background: lighten($Color5, 8);
+    color: white;
+    outline: none;
+    transition: 200ms;
+    option {
+      background: darken($Color5, 1);
     }
+  }
 }

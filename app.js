@@ -47,6 +47,8 @@ if (config.showNavbar) {
 //Get home page
 app.get("/", async (req, res) => {
   try {
+    const GetUrls = await ShortURL.find({});
+    const counter = await GetUrls.length;
     const urls = await ShortURL.find({
       showInPublicLinks: true, //get only public links
     })
@@ -57,6 +59,7 @@ app.get("/", async (req, res) => {
     res.render("home", {
       data: urls,
       config,
+      counter,
     });
   } catch (err) {
     res
