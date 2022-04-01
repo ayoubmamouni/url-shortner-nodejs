@@ -1,10 +1,9 @@
 .top-content {
-  background: darken($Color5, 1);
-  margin: 0.3rem 2rem;
+  // background: darken($Color5, 3%);
+  margin: 20px 5px;
   overflow: auto;
-  border-radius: 5px;
-  width: 96%;
-  padding: 1.3rem;
+  width: 95%;
+  padding: 15px;
   transition: 250ms;
   text-align: center;
   .main-title {

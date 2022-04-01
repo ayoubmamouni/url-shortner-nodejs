@@ -98,37 +98,46 @@
     <% } %>
 
 
-<section id="recent-link"></section>
-
-
-    <% if(config.showPublicLinks) {%>
-        <div class="all-public-urls">
-            <% if(data.length > 0){ %>
-                <% data.forEach(url=> { %>
-                    <div class="public-url-card">
-                        <div class="public-url-full-url">
-                            <label for="public-url-full-url">Full URL</label>
-                            <a href="<%= url.fullURL %>" class="public-url-full-url-a-tag"><%= url.fullURL %></a>
-                        </div>
-                        <div class="public-url-short-url">
-                            <label for="public-url-short-url">Short URL</label>
-                            <a href="/<%= url.shortURL %>"><span
-                                class="current-website"></span><%= url.shortURL %></a>
-                        </div> 
-                        <button data-short-url="<%= url.shortURL %>" data-clipboard-text="" class="copy">Copy Short URL</button>
-                        <div class="public-url-clicks-number">
-                            <h1><%= url.views %><span class="public-url-click-word"> Clicks</span></h1>
-                        </div>
-                        <div class="public-url-createdAt">
-                            <p>Created At<code> <%= url.postedOn.toLocaleDateString() %></code></p>
-                        </div>
-                    </div>
-                <% }) %>
-            <% }else{ %>
-                <H3 style="padding: 2rem 0; color: rgb(24, 77, 167);">No Public URLs Found!</H3>
-            <% } %>
+    <section class="url-content">
+        <section id="recent-link"></section>
+        <div class="showLinksBox-button">
+            <button id="show-public-links">Show public links</button>
         </div>
-    <% } %> 
+    </section>
+    <% if(config.showPublicLinks) {%>
+        <section id="urls-box">
+            <div class="urls-content">
+                <% if(data.length > 0){ %>
+                <% data.forEach(url=> { %>
+                <div class="url-item">
+                    <div class="url fullUrl">
+                        <label>Full URL</label>
+                        <a href="<%= url.fullURL %>"><%= url.fullURL %></a>
+                    </div>
+                    <hr>
+                    <div class="url shortUrl">
+                        <label>Short URL</label>
+                        <a href="/<%= url.shortURL %>" target="_blank"><span
+                                class="current-website"></span><%= url.shortURL %></a>
+                        <br>
+                        <br>
+                        <button data-short-url="<%= url.shortURL %>" data-clipboard-text="" class="copy">Copy</button>
+                    </div>
+                    <hr>
+                    <div class="url views">
+                        <label class="labelDetails">Clicks ⇒ <span class="viewsCount"><%= url.views %></span></label>
+                        <br>
+                        <div class="date"><%= url.postedOn.toLocaleDateString() %></div>
+                    </div>
+                </div>
+                <% }) %>
+                <% }else{ %>
+                <H3 style="padding: 2rem 0; color: aqua;">No public URLs available!</H3>
+                <% } %>
+            </div>
+        </section>
+    <% } %>
+
    
 
     <% if(config.showAds) {%>
@@ -141,10 +150,6 @@
 
     <%- include('./components/_footer.ejs') %>
 
-    <script>
-        var fullPublicUrl = document.querySelectorAll('.public-url-full-url-a-tag')
-        fullPublicUrl.forEach(i => i.innerHTML = i.innerHTML.slice(0,20)+'...')    
-    </script>
 </body>
 
 </html>

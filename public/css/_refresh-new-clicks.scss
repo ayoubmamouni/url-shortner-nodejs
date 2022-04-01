@@ -1,78 +1,76 @@
-.row-clicks{
-    display: flex;
-    align-items: center;
+.row-clicks {
+  display: flex;
+  align-items: center;
 }
-#refresh-clicks{
-    margin-left: 10px;
-    cursor: pointer;
-    border: 1px solid cyan;
-    padding: 2px;
-    border-radius: 2px;
-    background: #333;
-    transition: 300ms ease-in-out;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    &:active{
-        background: #2b2828;
-    }
+#refresh-clicks {
+  cursor: pointer;
+  border-radius: 3px;
+  transition: 300ms ease-in-out;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  // width: 150px;
+  padding: 5px 7px;
+  background: #0992ad;
+  color: #f4f4f4;
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+  color: #c1f4c5;
+  &:active {
+    background: #0a5577;
+  }
 }
-#refresh-icon{
-    margin:  0 6px;
-    display: none;
-    .animatioDivs{
-        display: flex;
-        div{
-            width: 3px;
-            height: 3px;
-            background: aqua;
-            margin: 0 2px;
-            border-radius: 100%;
-        }
-        div:nth-child(odd){
-            animation: divsAnimationsOdd 500ms infinite alternate linear;
-        }
-        div:nth-child(even){
-            animation: divsAnimationsEven 500ms infinite alternate linear;
-        }
+#refresh-icon {
+  margin: 0 6px;
+  display: none;
+  .animatioDivs {
+    display: flex;
+    div {
+      width: 3px;
+      height: 3px;
+      background: rgb(255, 255, 255);
+      margin: 0 2px;
+      border-radius: 100%;
     }
+    div:nth-child(odd) {
+      animation: divsAnimationsOdd 500ms infinite alternate linear;
+    }
+    div:nth-child(even) {
+      animation: divsAnimationsEven 500ms infinite alternate linear;
+    }
+  }
 }
 
-.disabledClick{
-    pointer-events: none !important;
+.disabledClick {
+  pointer-events: none !important;
 }
 
-.rotateRefreshIcon{
-    // animation: rotateRefreshIcon 700ms infinite linear;
-    display: block !important;
+.rotateRefreshIcon {
+  // animation: rotateRefreshIcon 700ms infinite linear;
+  display: block !important;
 }
 
 @keyframes divsAnimationsOdd {
-   from{
-       position: relative;
-       top: -2px;
-   }to{
-        position: relative;
-        top: 2px;
-        background: yellowgreen;
-   }
+  from {
+    position: relative;
+    top: -2px;
+  }
+  to {
+    position: relative;
+    top: 2px;
+    background: yellowgreen;
+  }
 }
 @keyframes divsAnimationsEven {
-   from{
-       position: relative;
-       top: 2px;
-   }to{
-        position: relative;
-        top: -2px;
-        background: rgb(178, 231, 62);
-   }
-}
-
-#clicksCount{
-    color: yellowgreen;
-    border: 1px solid yellow;
-    padding: 0 5px;
-    border-radius: 3px;
-    margin-left: 10px;
-    text-align: center;
+  from {
+    position: relative;
+    top: 2px;
+  }
+  to {
+    position: relative;
+    top: -2px;
+    background: rgb(178, 231, 62);
+  }
 }

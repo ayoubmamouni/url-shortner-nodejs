@@ -8,7 +8,7 @@ let config = {
   title: "Free URL Shotener - No registration required!",
   showNavbar: true, // turn off if you want to hide navigation bar
   showPublicLinks: true, // turn off if you want to hide public links
-  maxLength_PublicLinks: 100, // maximum you want to desplay in public links
+  maxLength_PublicLinks: 33, // maximum you want to desplay in public links
   RandomText_length: 5, //How many random latters you wand to generate for short URL
   user_can_Add_Adults_Link: false, //false = no, true = yes
   allows_user_to_create_URL: true, //false = no, true = yes

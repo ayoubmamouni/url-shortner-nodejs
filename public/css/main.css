@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -7,7 +9,18 @@
 }
 
 *::-webkit-scrollbar {
-  display: none;
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #42c2ff;
+  outline: 1px solid #dff6ff;
 }
 
 header {
@@ -278,12 +291,10 @@ header nav ul li a.externalLink:before {
 }
 
 .top-content {
-  background: #172f4f;
-  margin: 0.3rem 2rem;
+  margin: 20px 5px;
   overflow: auto;
-  border-radius: 5px;
-  width: 96%;
-  padding: 1.3rem;
+  width: 95%;
+  padding: 15px;
   -webkit-transition: 250ms;
   transition: 250ms;
   text-align: center;
@@ -314,64 +325,133 @@ header nav ul li a.externalLink:before {
   }
 }
 
-#recent-link hr {
-  background: #595151;
-  border: none;
-  height: 3px;
+section#lastUrl {
+  width: 95%;
+  border-radius: 5px;
+  background: #152a47;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-#recent-link .url-item {
-  border: 2px solid aqua;
-  background: #2c70a2;
-  margin: 0.3rem 2rem;
+.last-url-content {
   overflow: auto;
-  border-radius: 10px;
-  max-width: 700px;
-  width: 95%;
+  width: 100%;
+  padding: 0 1rem;
 }
 
-@media (max-width: 500px) {
-  #recent-link .url-item {
-    margin: 0.5rem 10px;
-  }
-}
-
-@media (min-width: 800px) {
-  #recent-link .url-item {
-    min-width: 650px;
-  }
-}
-
-#recent-link .url-item .url {
-  padding: 0.7rem;
-  width: 95%;
-}
-
-#recent-link .url-item .url a {
-  color: #95d1cc;
-  margin: 0 10px;
-}
-
-#recent-link .url-item .url .copyRecentURL {
-  border-radius: 7px;
+#lastUrl-title {
   font-size: 18px;
-  border: 1px solid navy;
-  -webkit-transition: 150ms;
-  transition: 150ms;
-  outline: none;
-  cursor: pointer;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 1rem;
+}
+
+.user-recent-url-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.full-short-url-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  overflow: auto;
+}
+
+@media screen and (min-width: 1200px) {
+  .full-short-url-cards {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .full-short-url-cards {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.recent-url-card {
+  background: #103569;
+  margin: 5px;
+  width: 300px;
+  max-height: -webkit-max-content;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  max-width: 300px;
+  min-width: 200px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.recent-url-card-title {
+  background: #06172f;
+  padding: 6px;
   text-align: center;
-  padding: 0.3rem 2rem;
-  background: #47526a;
-  color: white;
 }
 
-#recent-link .url-item .url .copyRecentURL:active {
-  -webkit-transform: scale(0.96);
-          transform: scale(0.96);
+.recent-url-card-main-content {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* justify-content: space-between; */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  height: 100%;
 }
 
-#recent-link .url-item .url .publicOrPrivate .public-Privat {
+.recent-user-urls {
+  overflow: auto;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  line-height: 1.4;
+  width: 100%;
+  padding: 7px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 13px;
+}
+
+.recent-user-urls div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -381,85 +461,129 @@ header nav ul li a.externalLink:before {
           flex-direction: column;
 }
 
-#recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink {
+a {
+  color: #84b4f6;
+}
+
+/* label[for="user-short-url"]{
+  color: red;
+} */
+/* btns tyles */
+button {
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#updatePublicPrivateLink {
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #0992ad;
+  color: #f4f4f4;
+}
+
+.copyRecentURL {
+  padding: 5px 7px;
+  background: #0992ad;
+  color: #f4f4f4;
+}
+
+.copyRecentURL:active {
+  position: relative;
+  top: 1px;
+}
+
+#clicksCount {
+  color: #4cff2d;
+  font-size: 40px;
+}
+
+.creation-recent-url-date {
+  margin: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0.3rem 0;
+  gap: 10px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  font-size: 13px;
+  opacity: 0.6;
 }
 
-#recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink select {
-  padding: 3px;
-  background: #214473;
-  border: 1px solid aqua;
-  color: white;
+select#LinkPoblicPrivateValue {
+  padding: 10px;
+  width: 150px;
+  font-size: 20px;
+  border: 0;
   outline: none;
-  margin: 0 10px;
-  margin-left: 0;
+  background: #1854a9;
+  color: #c1f4c5;
 }
 
-#recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink select option {
-  background: #172f4f;
-}
-
-#recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink #updatePublicPrivateLink {
-  padding: 3px 6px;
-  margin: 5px 0;
-  background: #183153;
-  color: #5584ac;
-  font-size: 14px;
+#updatePublicPrivateLink {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  padding: 5px 7px;
+  color: #f4f4f4;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  border: 1px solid aqua;
+  border-radius: 3px;
 }
 
-#recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink #updatePublicPrivateLink #update-icon {
+#updatePublicPrivateLink:active {
+  position: relative;
+  top: 1px;
+}
+
+#updatePublicPrivateLink #update-icon {
   margin: 0 6px;
   display: none;
 }
 
-#recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink #updatePublicPrivateLink #update-icon .animatioDivs {
+#updatePublicPrivateLink #update-icon .animatioDivs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink #updatePublicPrivateLink #update-icon .animatioDivs div {
+#updatePublicPrivateLink #update-icon .animatioDivs div {
   width: 3px;
   height: 3px;
-  background: aqua;
+  background: #f4f4f4;
   margin: 0 2px;
   border-radius: 100%;
 }
 
-#recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink #updatePublicPrivateLink #update-icon .animatioDivs div:nth-child(odd) {
+#updatePublicPrivateLink #update-icon .animatioDivs div:nth-child(odd) {
   -webkit-animation: divsAnimationsOdd 500ms infinite alternate linear;
           animation: divsAnimationsOdd 500ms infinite alternate linear;
 }
 
-#recent-link .url-item .url .publicOrPrivate .public-Privat #updatePublicPrivateLink #updatePublicPrivateLink #update-icon .animatioDivs div:nth-child(even) {
-  -webkit-animation: divsAnimationsEven 500ms infinite alternate linear;
-          animation: divsAnimationsEven 500ms infinite alternate linear;
+#updatePublicPrivateLink #update-icon .animatioDivs div:nth-child(even) {
+  -webkit-animation: divsAnimationsEven 500ms infinite alternate linear;
+          animation: divsAnimationsEven 500ms infinite alternate linear;
 }
 
-#recent-link .url-item .views code {
-  color: yellow;
+#public-or-private {
+  font-size: 30px;
+  color: #4cff2d;
 }
 
-#recent-link .url-item #qrcode-label {
-  color: #f7f5f2;
-  padding-left: 1rem;
-}
-
-#recent-link .url-item #qrcode {
-  padding: 1rem;
-  padding-top: 0.3rem;
+#public-or-private.active {
+  color: #ff4c2d;
 }
 
 .ad-container {
@@ -516,28 +640,30 @@ header nav ul li a.externalLink:before {
 }
 
 #refresh-clicks {
-  margin-left: 10px;
   cursor: pointer;
-  border: 1px solid cyan;
-  padding: 2px;
-  border-radius: 2px;
-  background: #333;
+  border-radius: 3px;
   -webkit-transition: 300ms ease-in-out;
   transition: 300ms ease-in-out;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 10px;
+  padding: 5px 7px;
+  background: #0992ad;
+  color: #f4f4f4;
+  color: #c1f4c5;
 }
 
 #refresh-clicks:active {
-  background: #2b2828;
+  position: relative;
+  top: 1px;
+}
+
+#refresh-clicks:active {
+  background: #0a5577;
 }
 
 #refresh-icon {
@@ -554,7 +680,7 @@ header nav ul li a.externalLink:before {
 #refresh-icon .animatioDivs div {
   width: 3px;
   height: 3px;
-  background: aqua;
+  background: white;
   margin: 0 2px;
   border-radius: 100%;
 }
@@ -623,15 +749,6 @@ header nav ul li a.externalLink:before {
     top: -2px;
     background: #b2e73e;
   }
-}
-
-#clicksCount {
-  color: yellowgreen;
-  border: 1px solid yellow;
-  padding: 0 5px;
-  border-radius: 3px;
-  margin-left: 10px;
-  text-align: center;
 }
 
 .public-link-choice {
@@ -839,33 +956,34 @@ section {
   background: #c5360a !important;
 }
 
-#urls-box {
-  overflow: auto;
-  border-radius: 10px;
-  max-width: 700px;
-  max-height: 500px;
-  overflow-y: scroll;
-  display: none;
-  background: #3a3845;
+.all-public-urls {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 700px) {
+  .all-public-urls {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+.public-url-card {
+  text-align: center;
+  background: #25497a;
   width: 95%;
-  -webkit-transition: 200ms;
-  transition: 200ms;
-  border: 2px solid aqua;
+  overflow: auto;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
-@media (max-width: 500px) {
-  #urls-box {
-    margin: 0.5rem 10px;
-  }
-}
-
-@media (min-width: 800px) {
-  #urls-box {
-    min-width: 650px;
-  }
-}
-
-#urls-box .urls-content {
+.public-url-full-url,
+.public-url-short-url {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -873,89 +991,50 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
-#urls-box hr {
-  background: #595151;
-  border: none;
-  height: 3px;
+.public-url-short-url {
+  margin: 10px 0;
 }
 
-#urls-box .url-item {
-  background: #2c70a2;
-  margin: 0.3rem 2rem;
-  overflow: auto;
-  border-radius: 10px;
-  max-width: 600px;
-  width: 95%;
-}
-
-@media (max-width: 500px) {
-  #urls-box .url-item {
-    margin: 0.5rem 10px;
-  }
-}
-
-@media (min-width: 800px) {
-  #urls-box .url-item {
-    min-width: 650px;
-  }
-}
-
-#urls-box .url-item .url {
-  padding: 0.7rem;
-  width: 80%;
-}
-
-#urls-box .url-item .url a {
-  color: #95d1cc;
-  margin: 0 10px;
-}
-
-#urls-box .url-item .url .copy {
-  border-radius: 7px;
-  font-size: 18px;
-  border: 1px solid navy;
-  -webkit-transition: 150ms;
-  transition: 150ms;
-  outline: none;
+.copy {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  background: #5584ac;
+  color: #f4f4f4;
+  border: #275390 2px solid;
   cursor: pointer;
-  text-align: center;
-  padding: 0.6rem 3rem;
-  background: #47526a;
-  color: white;
+  outline: none;
 }
 
-#urls-box .url-item .url .copy:active {
-  -webkit-transform: scale(0.96);
-          transform: scale(0.96);
+.copy:active {
+  position: relative;
+  top: 1px;
 }
 
-#urls-box .url-item .labelDetails .viewsCount {
-  color: yellowgreen;
-  border-radius: 3px;
-  border: 1px solid aqua;
-  padding: 0 2px;
-  margin: 0 3px;
-  text-align: center;
+.public-url-clicks-number {
+  margin: 10px 0;
+  color: #33ff00;
 }
 
-#urls-box .url-item .date {
-  color: yellow;
+.public-url-clicks-number .public-url-click-word {
+  font-size: 15px;
+}
+
+.public-url-createdAt {
   opacity: 0.5;
-  font-family: "Courier New", Courier, monospace;
-  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .container {
-  background: #162c4b;
+  background: #152a47;
   margin: 0.3rem 2rem;
   overflow: auto;
   border-radius: 10px;
-  padding: 1.3rem;
+  padding: 15px;
   -webkit-transition: 250ms;
   transition: 250ms;
   width: 95%;
@@ -981,6 +1060,7 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 10px;
 }
 
 .container .main-input #fullURL {
@@ -1055,5 +1135,9 @@ section {
 .container .main-input #submit-button:active {
   position: relative;
   top: 1px;
+}
+
+.container .total-urls {
+  margin-top: 15px;
 }
 /*# sourceMappingURL=main.css.map */
