@@ -64,7 +64,19 @@ section {
     margin-right: 10px;
   }
   #counter-urls {
-    color: #5b7db1;
+    color: #51ff00;
+  }
+}
+
+.warning-message {
+  text-align: center;
+  line-height: 1.4;
+  padding: 20px;
+  h1 {
+    color: rgb(244, 63, 31);
+  }
+  p {
+    letter-spacing: 1.1px;
   }
 }
 

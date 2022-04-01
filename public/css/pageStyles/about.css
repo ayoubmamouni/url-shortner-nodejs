@@ -386,20 +386,19 @@ body {
 
 .about .container {
   background: #12253f;
-  margin: .3rem 2rem;
+  margin: 0.3rem 2rem;
   overflow: auto;
   border-radius: 10px;
   max-width: 700px;
   padding: 1.3rem;
   -webkit-transition: 500ms;
   transition: 500ms;
-  border: 2px solid aqua;
   width: 95%;
 }
 
 @media (max-width: 500px) {
   .about .container {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -415,7 +414,7 @@ body {
 
 .about .container .about-card .card-title h1 {
   padding-bottom: 10px;
-  color: #20416f;
+  color: #0099ff;
   border-bottom: 5px solid #1e3d67;
 }
 
@@ -426,7 +425,7 @@ body {
 
 .about .container .about-card .about-subtitle p {
   font-size: 10px;
-  opacity: .6;
+  opacity: 0.6;
   color: #d9d9b8;
 }
 
@@ -438,13 +437,13 @@ body {
 
 .about .container .about-card .item b {
   margin: 0.5rem 0;
-  color: #23487b;
+  color: #297cf7;
 }
 
 .about .container .about-card .item p {
   line-height: 1.3rem;
   font-size: 14px;
   color: #fdfcfb;
-  opacity: .7;
+  opacity: 0.7;
 }
 /*# sourceMappingURL=about.css.map */

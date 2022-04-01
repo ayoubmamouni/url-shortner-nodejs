@@ -70,10 +70,9 @@
                 </div>
             </form>
             <% if(config.showLinksCounter) {%> 
-
                 <div id="total-urls">
                     <p id="total-urls-title">Total URLs: </p>
-                    <code id="counter-urls"><%= counter %></code>
+                    <h1 id="counter-urls"><%= counter %> </h1>
                 </div>
             <% }%>
         </div>
@@ -100,6 +99,18 @@
 
 <section id="recent-link"></section>
 
+<div class="warning-message">
+    <h1>Be carfull!</h1>
+    <p>
+        All these links are created by anonymous users, we have not reviewed these links.
+    </p>
+    <p>
+        Which means we don't know if these links contain malware or fake pages.
+    </p>
+    <p>
+        We are not responsible for your clicking on any link.
+    </p>
+</div>
 
     <% if(config.showPublicLinks) {%>
         <div class="all-public-urls">

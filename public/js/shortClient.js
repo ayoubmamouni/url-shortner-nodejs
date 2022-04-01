@@ -281,8 +281,6 @@ form.addEventListener("submit", (e) => {
       if (data.msg === "error") {
         return showToats("center", data.txt, "error", false, 2000, false);
       } else if (data.msg === "error-url-not-supported") {
-        //position, text, icon, showConfirmButton, timer, toast, reloadPage
-        // fullURL.value = ''
         submitButton.classList.remove("disabledClick");
         submitBtn.value = "Try again";
         setTimeout(() => {
@@ -311,22 +309,6 @@ form.addEventListener("submit", (e) => {
       )
     );
 });
-
-// //Show Public links button..
-// showLinksBtnToggle.addEventListener("click", (e) => {
-//   // urlsBox.classList.toggle('urls-box')
-//   e.target.classList.toggle("closeShowLinksBtn");
-//   if (e.target.innerText === "Show public links") {
-//     e.target.innerText = "Close public links";
-//   } else {
-//     e.target.innerText = "Show public links";
-//   }
-// });
-
-// // $("#show-public-links").click(function () {
-// //   $("#urls-box").slideToggle();
-// // });
-
 function showToats(
   position,
   text,

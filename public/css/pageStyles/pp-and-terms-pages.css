@@ -386,20 +386,19 @@ body {
 
 .page .container {
   background: #12253f;
-  margin: .3rem 2rem;
+  margin: 0.3rem 2rem;
   overflow: auto;
   border-radius: 10px;
   max-width: 700px;
   padding: 1.3rem;
   -webkit-transition: 500ms;
   transition: 500ms;
-  border: 2px solid aqua;
   width: 95%;
 }
 
 @media (max-width: 500px) {
   .page .container {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -415,14 +414,14 @@ body {
 
 .page .container .page-card .page-title h1 {
   padding-bottom: 10px;
-  color: #20416f;
+  color: #0099ff;
   border-bottom: 5px solid #1e3d67;
 }
 
 .page .container .page-card .page-title p {
   padding: 0.5rem 0;
   font-size: 10px;
-  opacity: .6;
+  opacity: 0.6;
   color: #d9d9b8;
 }
 
@@ -434,14 +433,14 @@ body {
 
 .page .container .page-card .page-text .item b {
   margin: 0.5rem 0;
-  color: #23487b;
+  color: #297cf7;
 }
 
 .page .container .page-card .page-text .item p {
   line-height: 1.3rem;
   font-size: 14px;
   color: #fdfcfb;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .page .container .page-card .page-text .last-updated-date {
@@ -450,7 +449,7 @@ body {
 }
 
 .page .container .page-card .page-text .last-updated-date em {
-  opacity: .8;
+  opacity: 0.8;
   color: #d9d9b8;
   font-size: 12px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -459,7 +458,7 @@ body {
 .page .container .page-card .page-text .last-updated-date p {
   margin-top: 0.2rem;
   font-size: 10px;
-  opacity: .7;
+  opacity: 0.7;
   color: #2f60a2;
 }
 /*# sourceMappingURL=pp-and-terms-pages.css.map */

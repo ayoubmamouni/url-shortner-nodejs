@@ -386,20 +386,19 @@ section.not-found {
 
 section.not-found .not-found-content {
   background: #12253f;
-  margin: .3rem 2rem;
+  margin: 0.3rem 2rem;
   overflow: auto;
   border-radius: 10px;
   max-width: 700px;
   padding: 1.3rem;
   -webkit-transition: 500ms;
   transition: 500ms;
-  border: 2px solid aqua;
   width: 95%;
 }
 
 @media (max-width: 500px) {
   section.not-found .not-found-content {
-    margin: .5rem 10px;
+    margin: 0.5rem 10px;
   }
 }
 
@@ -413,7 +412,7 @@ section.not-found .not-found-content h1 {
   text-align: center;
   padding: 2rem 0;
   font-size: 2rem;
-  color: #5584ac;
+  color: #0099ff;
   border-bottom: 5px solid #183153;
 }
 
