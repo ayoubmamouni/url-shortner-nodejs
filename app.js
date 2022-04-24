@@ -44,6 +44,7 @@ if (config.showNavbar) {
   app.use("/pages", require("./routers/pages"));
 }
 
+app.use("/admin", require("./admin/admin"));
 //Get home page
 app.get("/", async (req, res) => {
   try {
@@ -67,6 +68,7 @@ app.get("/", async (req, res) => {
       .send("OOPs, We have a problem in our server. Please try again.");
   }
 });
+
 //robots .txt for stupid search engines..
 app.get("/robots.txt", (req, res) => {
   res.sendFile(__dirname + "/robots.txt");
