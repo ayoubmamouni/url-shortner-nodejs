@@ -5,6 +5,14 @@ const ShortURL = require("../model/shortSchema");
 // delete a link
 admin.delete("/delete", async (req, res) => {
   let id = await req.body.id;
+  let key = await req.body.key;
+  console.log(key, process.env.KEY);
+  if (key != process.env.KEY) {
+    return res.status(403).json({
+      msg: "You have no access to delete this link.",
+      deleted: false,
+    });
+  }
   const Link = await ShortURL.findByIdAndDelete(id);
   if (!Link) {
     return res.json({

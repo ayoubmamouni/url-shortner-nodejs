@@ -159,6 +159,8 @@
         window.addEventListener('DOMContentLoaded', () => {
             loading.classList.add('hide')
         });
+
+        let myKey = localStorage.getItem('key')
         const displaData = urls =>{
             for(let i of urls){
                 dataDiv.innerHTML += 
@@ -187,6 +189,8 @@
                 `
             }
 
+            
+
             //delete link function
             const deleteUrl = async (id) =>{
                 let res = await fetch('/admin/delete', {
@@ -195,7 +199,8 @@
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        id
+                        id,
+                        key: myKey
                     })
                 })
                 let response = await res.json()
@@ -213,7 +218,7 @@
             })
         }
 
-        let myKey = localStorage.getItem('key')
+        
         const sendKey = async () =>{
             let res = await fetch('/admin/login', {
                 method: 'POST',
