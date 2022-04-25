@@ -1,2 +1,4 @@
 User-Agent: *
-Allow: /
+Disallow: /admin/
+Disallow: /model/
+Disallow: /public/adminLogin.html
